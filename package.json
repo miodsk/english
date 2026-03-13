@@ -1,0 +1,16 @@
+{
+	"scripts": {
+		"dev": "concurrently \"pnpm --filter @en/fronted dev\" \"pnpm --filter @en/server start:dev\" \"cd backend/ai && uv run uvicorn src.main:app --reload --port 8000\"",
+		"dev:fronted": "pnpm --filter @en/fronted dev",
+		"dev:server": "pnpm --filter @en/server start:dev",
+		"dev:ai": "cd backend/ai && uv run uvicorn src.main:app --reload --port 8000"
+	},
+	"devDependencies": {
+		"concurrently": "^9.1.0"
+	},
+	"dependencies": {
+		"@types/md5": "^2.3.6",
+		"dayjs": "^1.11.19",
+		"md5": "^2.3.0"
+	}
+}

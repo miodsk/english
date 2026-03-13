@@ -1,0 +1,84 @@
+exam_type,task_type,dimension,band_score,description
+ielts,data_graph,Task Achievement,9,Fully satisfies all the requirements of the task; clearly presents a fully developed response.
+ielts,data_graph,Task Achievement,8,"Covers all requirements of the task sufficiently; presents a clear overview of main trends, differences or stages."
+ielts,data_graph,Task Achievement,7,"Covers the requirements of the task; presents a clear overview of main trends, differences or stages; clearly presents and highlights key features."
+ielts,data_graph,Task Achievement,6,Addresses the requirements of the task; presents an overview with information appropriately selected; presents and adequately highlights key features/bullet points.
+ielts,data_graph,Task Achievement,5,Generally addresses the task; the format may be inappropriate in places; recounts details mechanically with no clear overview.
+ielts,data_graph,Coherence and Cohesion,9,Uses cohesion in such a way that it attracts no attention; skilfully manages paragraphing.
+ielts,data_graph,Coherence and Cohesion,8,Sequences information and ideas logically; manages all aspects of cohesion well; uses paragraphing sufficiently and appropriately.
+ielts,data_graph,Coherence and Cohesion,7,Logically organises information and ideas; there is clear progression throughout; uses a range of cohesive devices appropriately.
+ielts,data_graph,Coherence and Cohesion,6,Arranges information and ideas coherently; there is a clear overall progression; uses cohesive devices effectively but may be faulty or mechanical.
+ielts,data_graph,Coherence and Cohesion,5,Presents information with some organisation but there may be a lack of overall progression; makes inadequate or inaccurate use of cohesive devices.
+ielts,data_graph,Lexical Resource,9,Uses a wide range of vocabulary with very natural and sophisticated control of lexical features; rare minor errors occur only as slips.
+ielts,data_graph,Lexical Resource,8,Uses a wide range of vocabulary fluently and flexibly to convey precise meanings; skilfully uses uncommon lexical items with occasional inaccuracies.
+ielts,data_graph,Lexical Resource,7,Uses a sufficient range of vocabulary to allow some flexibility and precision; uses less common lexical items with some awareness of style and collocation.
+ielts,data_graph,Lexical Resource,6,Uses an adequate range of vocabulary for the task; attempts to use less common vocabulary but with some inaccuracy; makes some errors in spelling and word formation.
+ielts,data_graph,Lexical Resource,5,Uses a limited range of vocabulary; may make noticeable errors in spelling and word formation that may cause some difficulty for the reader.
+ielts,data_graph,Grammatical Range and Accuracy,9,Uses a wide range of structures with full flexibility and accuracy; rare minor errors occur only as slips.
+ielts,data_graph,Grammatical Range and Accuracy,8,Uses a wide range of structures; the majority of sentences are error-free; makes only very occasional errors or inappropriacies.
+ielts,data_graph,Grammatical Range and Accuracy,7,Uses a variety of complex structures; produces frequent error-free sentences; has good control of grammar and punctuation but may make a few errors.
+ielts,data_graph,Grammatical Range and Accuracy,6,Uses a mix of simple and complex sentence forms; makes some errors in grammar and punctuation but they rarely reduce communication.
+ielts,data_graph,Grammatical Range and Accuracy,5,Uses only a limited range of structures; attempts complex sentences but these tend to be less accurate than simple sentences.
+ielts,opinion_essay,Task Response,9,"Fully addresses all parts of the task; presents a fully developed position in answer to the question with relevant, fully extended and well supported ideas."
+ielts,opinion_essay,Task Response,8,"Sufficiently addresses all parts of the task; presents a well-developed response to the question with relevant, extended and supported ideas."
+ielts,opinion_essay,Task Response,7,"Addresses all parts of the task; presents a clear position throughout the response; presents, extends and supports main ideas, but there may be a tendency to over-generalise."
+ielts,opinion_essay,Task Response,6,Addresses all parts of the task although some parts may be more fully covered than others; presents a relevant position although the conclusions may become unclear or repetitive.
+ielts,opinion_essay,Task Response,5,Addresses the task only partially; the format may be inappropriate in places; expresses a position but the development is not always clear.
+ielts,opinion_essay,Coherence and Cohesion,9,Uses cohesion in such a way that it attracts no attention; skilfully manages paragraphing.
+ielts,opinion_essay,Coherence and Cohesion,8,Sequences information and ideas logically; manages all aspects of cohesion well; uses paragraphing sufficiently and appropriately.
+ielts,opinion_essay,Coherence and Cohesion,7,Logically organises information and ideas; there is clear progression throughout; uses a range of cohesive devices appropriately although there may be some under-/over-use.
+ielts,opinion_essay,Coherence and Cohesion,6,"Arranges information and ideas coherently and there is a clear overall progression; uses cohesive devices effectively, but cohesion within and/or between sentences may be faulty or mechanical."
+ielts,opinion_essay,Coherence and Cohesion,5,"Presents information with some organisation but there may be a lack of overall progression; makes inadequate, inaccurate or over-use of cohesive devices."
+ielts,opinion_essay,Lexical Resource,9,Uses a wide range of vocabulary with very natural and sophisticated control of lexical features; rare minor errors occur only as slips.
+ielts,opinion_essay,Lexical Resource,8,Uses a wide range of vocabulary fluently and flexibly to convey precise meanings; skilfully uses uncommon lexical items but there may be occasional inaccuracies in word choice and collocation.
+ielts,opinion_essay,Lexical Resource,7,"Uses a sufficient range of vocabulary to allow some flexibility and precision; uses less common lexical items with some awareness of style and collocation; may produce occasional errors in word choice, spelling and/or word formation."
+ielts,opinion_essay,Lexical Resource,6,"Uses an adequate range of vocabulary for the task; attempts to use less common vocabulary but with some inaccuracy; makes some errors in spelling and/or word formation, but they do not impede communication."
+ielts,opinion_essay,Lexical Resource,5,"Uses a limited range of vocabulary, but this is minimally adequate for the task; may make noticeable errors in spelling and/or word formation that may cause some difficulty for the reader."
+ielts,opinion_essay,Grammatical Range and Accuracy,9,Uses a wide range of structures with full flexibility and accuracy; rare minor errors occur only as slips.
+ielts,opinion_essay,Grammatical Range and Accuracy,8,Uses a wide range of structures; the majority of sentences are error-free; makes only very occasional errors or inappropriacies.
+ielts,opinion_essay,Grammatical Range and Accuracy,7,Uses a variety of complex structures; produces frequent error-free sentences; has good control of grammar and punctuation but may make a few errors.
+ielts,opinion_essay,Grammatical Range and Accuracy,6,Uses a mix of simple and complex sentence forms; makes some errors in grammar and punctuation but they rarely reduce communication.
+ielts,opinion_essay,Grammatical Range and Accuracy,5,Uses only a limited range of structures; attempts complex sentences but these tend to be less accurate than simple sentences; may make frequent grammatical errors.
+ielts,letter,Task Achievement,9,Fully satisfies all the requirements of the task; clearly presents a fully developed response with appropriate tone throughout.
+ielts,letter,Task Achievement,8,Fully explains the purpose of the letter; covers all bullet points clearly and consistently; uses a consistently appropriate tone.
+ielts,letter,Task Achievement,7,Explains the purpose of the letter; covers all bullet points; presents a tone that is appropriate and consistent.
+ielts,letter,Task Achievement,6,Answers the main points of the task; the purpose is generally clear; may use an inappropriate tone in some parts.
+ielts,letter,Task Achievement,5,Generally addresses the task; the format may be inappropriate in places; tone may be inconsistent.
+ielts,letter,Coherence and Cohesion,9,Uses cohesion in such a way that it attracts no attention; skilfully manages paragraphing.
+ielts,letter,Coherence and Cohesion,8,Sequences information and ideas logically; manages all aspects of cohesion well; uses paragraphing sufficiently and appropriately.
+ielts,letter,Coherence and Cohesion,7,Logically organises information and ideas; there is clear progression throughout; uses a range of cohesive devices appropriately.
+ielts,letter,Coherence and Cohesion,6,Arranges information and ideas coherently; there is a clear overall progression; uses cohesive devices effectively but may be faulty or mechanical.
+ielts,letter,Coherence and Cohesion,5,Presents information with some organisation but there may be a lack of overall progression; makes inadequate or inaccurate use of cohesive devices.
+ielts,letter,Lexical Resource,9,Uses a wide range of vocabulary with very natural and sophisticated control of lexical features; rare minor errors occur only as slips.
+ielts,letter,Lexical Resource,8,Uses a wide range of vocabulary fluently and flexibly to convey precise meanings; skilfully uses uncommon lexical items with occasional inaccuracies.
+ielts,letter,Lexical Resource,7,Uses a sufficient range of vocabulary to allow some flexibility and precision; uses less common lexical items with some awareness of style and collocation.
+ielts,letter,Lexical Resource,6,Uses an adequate range of vocabulary for the task; attempts to use less common vocabulary but with some inaccuracy; makes some errors in spelling and word formation.
+ielts,letter,Lexical Resource,5,Uses a limited range of vocabulary; may make noticeable errors in spelling and word formation that may cause some difficulty for the reader.
+ielts,letter,Grammatical Range and Accuracy,9,Uses a wide range of structures with full flexibility and accuracy; rare minor errors occur only as slips.
+ielts,letter,Grammatical Range and Accuracy,8,Uses a wide range of structures; the majority of sentences are error-free; makes only very occasional errors or inappropriacies.
+ielts,letter,Grammatical Range and Accuracy,7,Uses a variety of complex structures; produces frequent error-free sentences; has good control of grammar and punctuation but may make a few errors.
+ielts,letter,Grammatical Range and Accuracy,6,Uses a mix of simple and complex sentence forms; makes some errors in grammar and punctuation but they rarely reduce communication.
+ielts,letter,Grammatical Range and Accuracy,5,Uses only a limited range of structures; attempts complex sentences but these tend to be less accurate than simple sentences.
+cet-4,opinion_essay,Global Rating,15,Content is highly relevant and well-developed; excellent organization with sophisticated transitions; accurate and varied language use; wide range of vocabulary and complex structures.
+cet-4,opinion_essay,Global Rating,14,Content is relevant and complete; logical structure; accurate language with a wide range of vocabulary and structures.
+cet-4,opinion_essay,Global Rating,11,Content is relevant; structure is clear; language is generally accurate with some minor errors; vocabulary is adequate.
+cet-4,opinion_essay,Global Rating,8,Content is basically relevant but incomplete; structure is somewhat loose; language errors are frequent and sometimes impede communication.
+cet-4,opinion_essay,Global Rating,5,Content is only marginally relevant; lacks clear structure; frequent errors seriously impede communication; limited vocabulary.
+cet-6,opinion_essay,Global Rating,15,Outstanding content with depth and insight; sophisticated structure with excellent cohesion; near-native language accuracy; impressive lexical variety and stylistic awareness.
+cet-6,opinion_essay,Global Rating,14,Relevant content with depth; sophisticated structure and cohesion; high level of language accuracy and lexical variety.
+cet-6,opinion_essay,Global Rating,11,Relevant content; clear organization; good control of grammar and vocabulary with some typical errors.
+cet-6,opinion_essay,Global Rating,8,Basically relevant content; structure needs improvement; noticeable errors that occasionally impede understanding; limited vocabulary range.
+cet-6,opinion_essay,Global Rating,5,Limited relevance to the topic; poor organization; frequent errors that seriously impede communication.
+kaoyan,opinion_essay,Global Rating,20,Fully addresses the task with insightful content; excellent organization and coherence; highly accurate and sophisticated language; demonstrates mastery of academic writing conventions.
+kaoyan,opinion_essay,Global Rating,18,Addresses all parts of the task; well-organized and fluent; high accuracy and wide range of structures; effective use of cohesive devices.
+kaoyan,opinion_essay,Global Rating,14,Addresses the task; reasonably organized; language is accurate with occasional errors that do not hinder communication.
+kaoyan,opinion_essay,Global Rating,10,Partially addresses the task; organization is unclear in places; frequent errors that sometimes affect understanding.
+kaoyan,opinion_essay,Global Rating,6,Minimally addresses the task; poor organization; errors severely impede communication; very limited vocabulary.
+kaoyan,notice,Global Rating,10,"Fully satisfies task requirements with excellent format; clear, concise and appropriate language; virtually error-free."
+kaoyan,notice,Global Rating,9,Addresses the task requirements fully; appropriate format and tone; clear and concise language with very few errors.
+kaoyan,notice,Global Rating,7,Addresses main task requirements; generally appropriate format; some minor errors that do not affect communication.
+kaoyan,notice,Global Rating,5,Partially addresses the task; format issues; noticeable errors that may affect clarity.
+kaoyan,letter,Global Rating,10,"Fully addresses all requirements; perfect format and tone; clear, fluent and virtually error-free."
+kaoyan,letter,Global Rating,9,Addresses all requirements; appropriate format and tone; accurate language with minimal errors.
+kaoyan,letter,Global Rating,7,Addresses main requirements; generally appropriate format; some errors that do not impede communication.
+kaoyan,letter,Global Rating,5,Partially addresses requirements; format or tone issues; frequent errors affecting clarity.

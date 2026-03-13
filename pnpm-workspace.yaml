@@ -1,0 +1,6 @@
+packages:
+    - 'packages/*'
+    - 'fronted'
+    - 'backend/server'
+    - 'common'
+    - 'config'

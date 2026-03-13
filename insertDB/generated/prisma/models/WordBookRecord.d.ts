@@ -1,0 +1,1743 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model WordBookRecord
+ *
+ */
+export type WordBookRecordModel = runtime.Types.Result.DefaultSelection<Prisma.$WordBookRecordPayload>;
+export type AggregateWordBookRecord = {
+    _count: WordBookRecordCountAggregateOutputType | null;
+    _avg: WordBookRecordAvgAggregateOutputType | null;
+    _sum: WordBookRecordSumAggregateOutputType | null;
+    _min: WordBookRecordMinAggregateOutputType | null;
+    _max: WordBookRecordMaxAggregateOutputType | null;
+};
+export type WordBookRecordAvgAggregateOutputType = {
+    easinessFactor: number | null;
+    interval: number | null;
+    reps: number | null;
+    wrongCount: number | null;
+};
+export type WordBookRecordSumAggregateOutputType = {
+    easinessFactor: number | null;
+    interval: number | null;
+    reps: number | null;
+    wrongCount: number | null;
+};
+export type WordBookRecordMinAggregateOutputType = {
+    id: string | null;
+    wordId: string | null;
+    userId: string | null;
+    easinessFactor: number | null;
+    interval: number | null;
+    reps: number | null;
+    nextReviewAt: Date | null;
+    wrongCount: number | null;
+    isMaster: boolean | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type WordBookRecordMaxAggregateOutputType = {
+    id: string | null;
+    wordId: string | null;
+    userId: string | null;
+    easinessFactor: number | null;
+    interval: number | null;
+    reps: number | null;
+    nextReviewAt: Date | null;
+    wrongCount: number | null;
+    isMaster: boolean | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type WordBookRecordCountAggregateOutputType = {
+    id: number;
+    wordId: number;
+    userId: number;
+    easinessFactor: number;
+    interval: number;
+    reps: number;
+    nextReviewAt: number;
+    wrongCount: number;
+    isMaster: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type WordBookRecordAvgAggregateInputType = {
+    easinessFactor?: true;
+    interval?: true;
+    reps?: true;
+    wrongCount?: true;
+};
+export type WordBookRecordSumAggregateInputType = {
+    easinessFactor?: true;
+    interval?: true;
+    reps?: true;
+    wrongCount?: true;
+};
+export type WordBookRecordMinAggregateInputType = {
+    id?: true;
+    wordId?: true;
+    userId?: true;
+    easinessFactor?: true;
+    interval?: true;
+    reps?: true;
+    nextReviewAt?: true;
+    wrongCount?: true;
+    isMaster?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type WordBookRecordMaxAggregateInputType = {
+    id?: true;
+    wordId?: true;
+    userId?: true;
+    easinessFactor?: true;
+    interval?: true;
+    reps?: true;
+    nextReviewAt?: true;
+    wrongCount?: true;
+    isMaster?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type WordBookRecordCountAggregateInputType = {
+    id?: true;
+    wordId?: true;
+    userId?: true;
+    easinessFactor?: true;
+    interval?: true;
+    reps?: true;
+    nextReviewAt?: true;
+    wrongCount?: true;
+    isMaster?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type WordBookRecordAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which WordBookRecord to aggregate.
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of WordBookRecords to fetch.
+     */
+    orderBy?: Prisma.WordBookRecordOrderByWithRelationInput | Prisma.WordBookRecordOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.WordBookRecordWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` WordBookRecords from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` WordBookRecords.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned WordBookRecords
+    **/
+    _count?: true | WordBookRecordCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+    **/
+    _avg?: WordBookRecordAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+    **/
+    _sum?: WordBookRecordSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: WordBookRecordMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: WordBookRecordMaxAggregateInputType;
+};
+export type GetWordBookRecordAggregateType<T extends WordBookRecordAggregateArgs> = {
+    [P in keyof T & keyof AggregateWordBookRecord]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateWordBookRecord[P]> : Prisma.GetScalarType<T[P], AggregateWordBookRecord[P]>;
+};
+export type WordBookRecordGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.WordBookRecordWhereInput;
+    orderBy?: Prisma.WordBookRecordOrderByWithAggregationInput | Prisma.WordBookRecordOrderByWithAggregationInput[];
+    by: Prisma.WordBookRecordScalarFieldEnum[] | Prisma.WordBookRecordScalarFieldEnum;
+    having?: Prisma.WordBookRecordScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: WordBookRecordCountAggregateInputType | true;
+    _avg?: WordBookRecordAvgAggregateInputType;
+    _sum?: WordBookRecordSumAggregateInputType;
+    _min?: WordBookRecordMinAggregateInputType;
+    _max?: WordBookRecordMaxAggregateInputType;
+};
+export type WordBookRecordGroupByOutputType = {
+    id: string;
+    wordId: string;
+    userId: string;
+    easinessFactor: number;
+    interval: number;
+    reps: number;
+    nextReviewAt: Date;
+    wrongCount: number;
+    isMaster: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: WordBookRecordCountAggregateOutputType | null;
+    _avg: WordBookRecordAvgAggregateOutputType | null;
+    _sum: WordBookRecordSumAggregateOutputType | null;
+    _min: WordBookRecordMinAggregateOutputType | null;
+    _max: WordBookRecordMaxAggregateOutputType | null;
+};
+type GetWordBookRecordGroupByPayload<T extends WordBookRecordGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<WordBookRecordGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof WordBookRecordGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], WordBookRecordGroupByOutputType[P]> : Prisma.GetScalarType<T[P], WordBookRecordGroupByOutputType[P]>;
+}>>;
+export type WordBookRecordWhereInput = {
+    AND?: Prisma.WordBookRecordWhereInput | Prisma.WordBookRecordWhereInput[];
+    OR?: Prisma.WordBookRecordWhereInput[];
+    NOT?: Prisma.WordBookRecordWhereInput | Prisma.WordBookRecordWhereInput[];
+    id?: Prisma.StringFilter<"WordBookRecord"> | string;
+    wordId?: Prisma.StringFilter<"WordBookRecord"> | string;
+    userId?: Prisma.StringFilter<"WordBookRecord"> | string;
+    easinessFactor?: Prisma.FloatFilter<"WordBookRecord"> | number;
+    interval?: Prisma.IntFilter<"WordBookRecord"> | number;
+    reps?: Prisma.IntFilter<"WordBookRecord"> | number;
+    nextReviewAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    wrongCount?: Prisma.IntFilter<"WordBookRecord"> | number;
+    isMaster?: Prisma.BoolFilter<"WordBookRecord"> | boolean;
+    createdAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    word?: Prisma.XOR<Prisma.WordBookScalarRelationFilter, Prisma.WordBookWhereInput>;
+    reviewLogs?: Prisma.ReviewLogListRelationFilter;
+};
+export type WordBookRecordOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    wordId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    nextReviewAt?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+    isMaster?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    user?: Prisma.UserOrderByWithRelationInput;
+    word?: Prisma.WordBookOrderByWithRelationInput;
+    reviewLogs?: Prisma.ReviewLogOrderByRelationAggregateInput;
+};
+export type WordBookRecordWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    userId_wordId?: Prisma.WordBookRecordUserIdWordIdCompoundUniqueInput;
+    AND?: Prisma.WordBookRecordWhereInput | Prisma.WordBookRecordWhereInput[];
+    OR?: Prisma.WordBookRecordWhereInput[];
+    NOT?: Prisma.WordBookRecordWhereInput | Prisma.WordBookRecordWhereInput[];
+    wordId?: Prisma.StringFilter<"WordBookRecord"> | string;
+    userId?: Prisma.StringFilter<"WordBookRecord"> | string;
+    easinessFactor?: Prisma.FloatFilter<"WordBookRecord"> | number;
+    interval?: Prisma.IntFilter<"WordBookRecord"> | number;
+    reps?: Prisma.IntFilter<"WordBookRecord"> | number;
+    nextReviewAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    wrongCount?: Prisma.IntFilter<"WordBookRecord"> | number;
+    isMaster?: Prisma.BoolFilter<"WordBookRecord"> | boolean;
+    createdAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+    word?: Prisma.XOR<Prisma.WordBookScalarRelationFilter, Prisma.WordBookWhereInput>;
+    reviewLogs?: Prisma.ReviewLogListRelationFilter;
+}, "id" | "userId_wordId">;
+export type WordBookRecordOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    wordId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    nextReviewAt?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+    isMaster?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.WordBookRecordCountOrderByAggregateInput;
+    _avg?: Prisma.WordBookRecordAvgOrderByAggregateInput;
+    _max?: Prisma.WordBookRecordMaxOrderByAggregateInput;
+    _min?: Prisma.WordBookRecordMinOrderByAggregateInput;
+    _sum?: Prisma.WordBookRecordSumOrderByAggregateInput;
+};
+export type WordBookRecordScalarWhereWithAggregatesInput = {
+    AND?: Prisma.WordBookRecordScalarWhereWithAggregatesInput | Prisma.WordBookRecordScalarWhereWithAggregatesInput[];
+    OR?: Prisma.WordBookRecordScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.WordBookRecordScalarWhereWithAggregatesInput | Prisma.WordBookRecordScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"WordBookRecord"> | string;
+    wordId?: Prisma.StringWithAggregatesFilter<"WordBookRecord"> | string;
+    userId?: Prisma.StringWithAggregatesFilter<"WordBookRecord"> | string;
+    easinessFactor?: Prisma.FloatWithAggregatesFilter<"WordBookRecord"> | number;
+    interval?: Prisma.IntWithAggregatesFilter<"WordBookRecord"> | number;
+    reps?: Prisma.IntWithAggregatesFilter<"WordBookRecord"> | number;
+    nextReviewAt?: Prisma.DateTimeWithAggregatesFilter<"WordBookRecord"> | Date | string;
+    wrongCount?: Prisma.IntWithAggregatesFilter<"WordBookRecord"> | number;
+    isMaster?: Prisma.BoolWithAggregatesFilter<"WordBookRecord"> | boolean;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"WordBookRecord"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"WordBookRecord"> | Date | string;
+};
+export type WordBookRecordCreateInput = {
+    id?: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutWordBookRecordsInput;
+    word: Prisma.WordBookCreateNestedOneWithoutWordBookRecordsInput;
+    reviewLogs?: Prisma.ReviewLogCreateNestedManyWithoutRecordInput;
+};
+export type WordBookRecordUncheckedCreateInput = {
+    id?: string;
+    wordId: string;
+    userId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reviewLogs?: Prisma.ReviewLogUncheckedCreateNestedManyWithoutRecordInput;
+};
+export type WordBookRecordUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutWordBookRecordsNestedInput;
+    word?: Prisma.WordBookUpdateOneRequiredWithoutWordBookRecordsNestedInput;
+    reviewLogs?: Prisma.ReviewLogUpdateManyWithoutRecordNestedInput;
+};
+export type WordBookRecordUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    wordId?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reviewLogs?: Prisma.ReviewLogUncheckedUpdateManyWithoutRecordNestedInput;
+};
+export type WordBookRecordCreateManyInput = {
+    id?: string;
+    wordId: string;
+    userId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type WordBookRecordUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type WordBookRecordUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    wordId?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type WordBookRecordListRelationFilter = {
+    every?: Prisma.WordBookRecordWhereInput;
+    some?: Prisma.WordBookRecordWhereInput;
+    none?: Prisma.WordBookRecordWhereInput;
+};
+export type WordBookRecordOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type WordBookRecordUserIdWordIdCompoundUniqueInput = {
+    userId: string;
+    wordId: string;
+};
+export type WordBookRecordCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    wordId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    nextReviewAt?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+    isMaster?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type WordBookRecordAvgOrderByAggregateInput = {
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+};
+export type WordBookRecordMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    wordId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    nextReviewAt?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+    isMaster?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type WordBookRecordMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    wordId?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    nextReviewAt?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+    isMaster?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type WordBookRecordSumOrderByAggregateInput = {
+    easinessFactor?: Prisma.SortOrder;
+    interval?: Prisma.SortOrder;
+    reps?: Prisma.SortOrder;
+    wrongCount?: Prisma.SortOrder;
+};
+export type WordBookRecordScalarRelationFilter = {
+    is?: Prisma.WordBookRecordWhereInput;
+    isNot?: Prisma.WordBookRecordWhereInput;
+};
+export type WordBookRecordCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutUserInput, Prisma.WordBookRecordUncheckedCreateWithoutUserInput> | Prisma.WordBookRecordCreateWithoutUserInput[] | Prisma.WordBookRecordUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutUserInput | Prisma.WordBookRecordCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.WordBookRecordCreateManyUserInputEnvelope;
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+};
+export type WordBookRecordUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutUserInput, Prisma.WordBookRecordUncheckedCreateWithoutUserInput> | Prisma.WordBookRecordCreateWithoutUserInput[] | Prisma.WordBookRecordUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutUserInput | Prisma.WordBookRecordCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.WordBookRecordCreateManyUserInputEnvelope;
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+};
+export type WordBookRecordUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutUserInput, Prisma.WordBookRecordUncheckedCreateWithoutUserInput> | Prisma.WordBookRecordCreateWithoutUserInput[] | Prisma.WordBookRecordUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutUserInput | Prisma.WordBookRecordCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.WordBookRecordUpsertWithWhereUniqueWithoutUserInput | Prisma.WordBookRecordUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.WordBookRecordCreateManyUserInputEnvelope;
+    set?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    disconnect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    delete?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    update?: Prisma.WordBookRecordUpdateWithWhereUniqueWithoutUserInput | Prisma.WordBookRecordUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.WordBookRecordUpdateManyWithWhereWithoutUserInput | Prisma.WordBookRecordUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.WordBookRecordScalarWhereInput | Prisma.WordBookRecordScalarWhereInput[];
+};
+export type WordBookRecordUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutUserInput, Prisma.WordBookRecordUncheckedCreateWithoutUserInput> | Prisma.WordBookRecordCreateWithoutUserInput[] | Prisma.WordBookRecordUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutUserInput | Prisma.WordBookRecordCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.WordBookRecordUpsertWithWhereUniqueWithoutUserInput | Prisma.WordBookRecordUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.WordBookRecordCreateManyUserInputEnvelope;
+    set?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    disconnect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    delete?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    update?: Prisma.WordBookRecordUpdateWithWhereUniqueWithoutUserInput | Prisma.WordBookRecordUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.WordBookRecordUpdateManyWithWhereWithoutUserInput | Prisma.WordBookRecordUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.WordBookRecordScalarWhereInput | Prisma.WordBookRecordScalarWhereInput[];
+};
+export type FloatFieldUpdateOperationsInput = {
+    set?: number;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
+};
+export type BoolFieldUpdateOperationsInput = {
+    set?: boolean;
+};
+export type WordBookRecordCreateNestedOneWithoutReviewLogsInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutReviewLogsInput, Prisma.WordBookRecordUncheckedCreateWithoutReviewLogsInput>;
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutReviewLogsInput;
+    connect?: Prisma.WordBookRecordWhereUniqueInput;
+};
+export type WordBookRecordUpdateOneRequiredWithoutReviewLogsNestedInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutReviewLogsInput, Prisma.WordBookRecordUncheckedCreateWithoutReviewLogsInput>;
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutReviewLogsInput;
+    upsert?: Prisma.WordBookRecordUpsertWithoutReviewLogsInput;
+    connect?: Prisma.WordBookRecordWhereUniqueInput;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.WordBookRecordUpdateToOneWithWhereWithoutReviewLogsInput, Prisma.WordBookRecordUpdateWithoutReviewLogsInput>, Prisma.WordBookRecordUncheckedUpdateWithoutReviewLogsInput>;
+};
+export type WordBookRecordCreateNestedManyWithoutWordInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutWordInput, Prisma.WordBookRecordUncheckedCreateWithoutWordInput> | Prisma.WordBookRecordCreateWithoutWordInput[] | Prisma.WordBookRecordUncheckedCreateWithoutWordInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutWordInput | Prisma.WordBookRecordCreateOrConnectWithoutWordInput[];
+    createMany?: Prisma.WordBookRecordCreateManyWordInputEnvelope;
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+};
+export type WordBookRecordUncheckedCreateNestedManyWithoutWordInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutWordInput, Prisma.WordBookRecordUncheckedCreateWithoutWordInput> | Prisma.WordBookRecordCreateWithoutWordInput[] | Prisma.WordBookRecordUncheckedCreateWithoutWordInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutWordInput | Prisma.WordBookRecordCreateOrConnectWithoutWordInput[];
+    createMany?: Prisma.WordBookRecordCreateManyWordInputEnvelope;
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+};
+export type WordBookRecordUpdateManyWithoutWordNestedInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutWordInput, Prisma.WordBookRecordUncheckedCreateWithoutWordInput> | Prisma.WordBookRecordCreateWithoutWordInput[] | Prisma.WordBookRecordUncheckedCreateWithoutWordInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutWordInput | Prisma.WordBookRecordCreateOrConnectWithoutWordInput[];
+    upsert?: Prisma.WordBookRecordUpsertWithWhereUniqueWithoutWordInput | Prisma.WordBookRecordUpsertWithWhereUniqueWithoutWordInput[];
+    createMany?: Prisma.WordBookRecordCreateManyWordInputEnvelope;
+    set?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    disconnect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    delete?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    update?: Prisma.WordBookRecordUpdateWithWhereUniqueWithoutWordInput | Prisma.WordBookRecordUpdateWithWhereUniqueWithoutWordInput[];
+    updateMany?: Prisma.WordBookRecordUpdateManyWithWhereWithoutWordInput | Prisma.WordBookRecordUpdateManyWithWhereWithoutWordInput[];
+    deleteMany?: Prisma.WordBookRecordScalarWhereInput | Prisma.WordBookRecordScalarWhereInput[];
+};
+export type WordBookRecordUncheckedUpdateManyWithoutWordNestedInput = {
+    create?: Prisma.XOR<Prisma.WordBookRecordCreateWithoutWordInput, Prisma.WordBookRecordUncheckedCreateWithoutWordInput> | Prisma.WordBookRecordCreateWithoutWordInput[] | Prisma.WordBookRecordUncheckedCreateWithoutWordInput[];
+    connectOrCreate?: Prisma.WordBookRecordCreateOrConnectWithoutWordInput | Prisma.WordBookRecordCreateOrConnectWithoutWordInput[];
+    upsert?: Prisma.WordBookRecordUpsertWithWhereUniqueWithoutWordInput | Prisma.WordBookRecordUpsertWithWhereUniqueWithoutWordInput[];
+    createMany?: Prisma.WordBookRecordCreateManyWordInputEnvelope;
+    set?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    disconnect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    delete?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    connect?: Prisma.WordBookRecordWhereUniqueInput | Prisma.WordBookRecordWhereUniqueInput[];
+    update?: Prisma.WordBookRecordUpdateWithWhereUniqueWithoutWordInput | Prisma.WordBookRecordUpdateWithWhereUniqueWithoutWordInput[];
+    updateMany?: Prisma.WordBookRecordUpdateManyWithWhereWithoutWordInput | Prisma.WordBookRecordUpdateManyWithWhereWithoutWordInput[];
+    deleteMany?: Prisma.WordBookRecordScalarWhereInput | Prisma.WordBookRecordScalarWhereInput[];
+};
+export type WordBookRecordCreateWithoutUserInput = {
+    id?: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    word: Prisma.WordBookCreateNestedOneWithoutWordBookRecordsInput;
+    reviewLogs?: Prisma.ReviewLogCreateNestedManyWithoutRecordInput;
+};
+export type WordBookRecordUncheckedCreateWithoutUserInput = {
+    id?: string;
+    wordId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reviewLogs?: Prisma.ReviewLogUncheckedCreateNestedManyWithoutRecordInput;
+};
+export type WordBookRecordCreateOrConnectWithoutUserInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    create: Prisma.XOR<Prisma.WordBookRecordCreateWithoutUserInput, Prisma.WordBookRecordUncheckedCreateWithoutUserInput>;
+};
+export type WordBookRecordCreateManyUserInputEnvelope = {
+    data: Prisma.WordBookRecordCreateManyUserInput | Prisma.WordBookRecordCreateManyUserInput[];
+    skipDuplicates?: boolean;
+};
+export type WordBookRecordUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    update: Prisma.XOR<Prisma.WordBookRecordUpdateWithoutUserInput, Prisma.WordBookRecordUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.WordBookRecordCreateWithoutUserInput, Prisma.WordBookRecordUncheckedCreateWithoutUserInput>;
+};
+export type WordBookRecordUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateWithoutUserInput, Prisma.WordBookRecordUncheckedUpdateWithoutUserInput>;
+};
+export type WordBookRecordUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.WordBookRecordScalarWhereInput;
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateManyMutationInput, Prisma.WordBookRecordUncheckedUpdateManyWithoutUserInput>;
+};
+export type WordBookRecordScalarWhereInput = {
+    AND?: Prisma.WordBookRecordScalarWhereInput | Prisma.WordBookRecordScalarWhereInput[];
+    OR?: Prisma.WordBookRecordScalarWhereInput[];
+    NOT?: Prisma.WordBookRecordScalarWhereInput | Prisma.WordBookRecordScalarWhereInput[];
+    id?: Prisma.StringFilter<"WordBookRecord"> | string;
+    wordId?: Prisma.StringFilter<"WordBookRecord"> | string;
+    userId?: Prisma.StringFilter<"WordBookRecord"> | string;
+    easinessFactor?: Prisma.FloatFilter<"WordBookRecord"> | number;
+    interval?: Prisma.IntFilter<"WordBookRecord"> | number;
+    reps?: Prisma.IntFilter<"WordBookRecord"> | number;
+    nextReviewAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    wrongCount?: Prisma.IntFilter<"WordBookRecord"> | number;
+    isMaster?: Prisma.BoolFilter<"WordBookRecord"> | boolean;
+    createdAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"WordBookRecord"> | Date | string;
+};
+export type WordBookRecordCreateWithoutReviewLogsInput = {
+    id?: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutWordBookRecordsInput;
+    word: Prisma.WordBookCreateNestedOneWithoutWordBookRecordsInput;
+};
+export type WordBookRecordUncheckedCreateWithoutReviewLogsInput = {
+    id?: string;
+    wordId: string;
+    userId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type WordBookRecordCreateOrConnectWithoutReviewLogsInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    create: Prisma.XOR<Prisma.WordBookRecordCreateWithoutReviewLogsInput, Prisma.WordBookRecordUncheckedCreateWithoutReviewLogsInput>;
+};
+export type WordBookRecordUpsertWithoutReviewLogsInput = {
+    update: Prisma.XOR<Prisma.WordBookRecordUpdateWithoutReviewLogsInput, Prisma.WordBookRecordUncheckedUpdateWithoutReviewLogsInput>;
+    create: Prisma.XOR<Prisma.WordBookRecordCreateWithoutReviewLogsInput, Prisma.WordBookRecordUncheckedCreateWithoutReviewLogsInput>;
+    where?: Prisma.WordBookRecordWhereInput;
+};
+export type WordBookRecordUpdateToOneWithWhereWithoutReviewLogsInput = {
+    where?: Prisma.WordBookRecordWhereInput;
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateWithoutReviewLogsInput, Prisma.WordBookRecordUncheckedUpdateWithoutReviewLogsInput>;
+};
+export type WordBookRecordUpdateWithoutReviewLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutWordBookRecordsNestedInput;
+    word?: Prisma.WordBookUpdateOneRequiredWithoutWordBookRecordsNestedInput;
+};
+export type WordBookRecordUncheckedUpdateWithoutReviewLogsInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    wordId?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type WordBookRecordCreateWithoutWordInput = {
+    id?: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutWordBookRecordsInput;
+    reviewLogs?: Prisma.ReviewLogCreateNestedManyWithoutRecordInput;
+};
+export type WordBookRecordUncheckedCreateWithoutWordInput = {
+    id?: string;
+    userId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+    reviewLogs?: Prisma.ReviewLogUncheckedCreateNestedManyWithoutRecordInput;
+};
+export type WordBookRecordCreateOrConnectWithoutWordInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    create: Prisma.XOR<Prisma.WordBookRecordCreateWithoutWordInput, Prisma.WordBookRecordUncheckedCreateWithoutWordInput>;
+};
+export type WordBookRecordCreateManyWordInputEnvelope = {
+    data: Prisma.WordBookRecordCreateManyWordInput | Prisma.WordBookRecordCreateManyWordInput[];
+    skipDuplicates?: boolean;
+};
+export type WordBookRecordUpsertWithWhereUniqueWithoutWordInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    update: Prisma.XOR<Prisma.WordBookRecordUpdateWithoutWordInput, Prisma.WordBookRecordUncheckedUpdateWithoutWordInput>;
+    create: Prisma.XOR<Prisma.WordBookRecordCreateWithoutWordInput, Prisma.WordBookRecordUncheckedCreateWithoutWordInput>;
+};
+export type WordBookRecordUpdateWithWhereUniqueWithoutWordInput = {
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateWithoutWordInput, Prisma.WordBookRecordUncheckedUpdateWithoutWordInput>;
+};
+export type WordBookRecordUpdateManyWithWhereWithoutWordInput = {
+    where: Prisma.WordBookRecordScalarWhereInput;
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateManyMutationInput, Prisma.WordBookRecordUncheckedUpdateManyWithoutWordInput>;
+};
+export type WordBookRecordCreateManyUserInput = {
+    id?: string;
+    wordId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type WordBookRecordUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    word?: Prisma.WordBookUpdateOneRequiredWithoutWordBookRecordsNestedInput;
+    reviewLogs?: Prisma.ReviewLogUpdateManyWithoutRecordNestedInput;
+};
+export type WordBookRecordUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    wordId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reviewLogs?: Prisma.ReviewLogUncheckedUpdateManyWithoutRecordNestedInput;
+};
+export type WordBookRecordUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    wordId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type WordBookRecordCreateManyWordInput = {
+    id?: string;
+    userId: string;
+    easinessFactor?: number;
+    interval?: number;
+    reps?: number;
+    nextReviewAt?: Date | string;
+    wrongCount?: number;
+    isMaster?: boolean;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type WordBookRecordUpdateWithoutWordInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutWordBookRecordsNestedInput;
+    reviewLogs?: Prisma.ReviewLogUpdateManyWithoutRecordNestedInput;
+};
+export type WordBookRecordUncheckedUpdateWithoutWordInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    reviewLogs?: Prisma.ReviewLogUncheckedUpdateManyWithoutRecordNestedInput;
+};
+export type WordBookRecordUncheckedUpdateManyWithoutWordInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+    easinessFactor?: Prisma.FloatFieldUpdateOperationsInput | number;
+    interval?: Prisma.IntFieldUpdateOperationsInput | number;
+    reps?: Prisma.IntFieldUpdateOperationsInput | number;
+    nextReviewAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    wrongCount?: Prisma.IntFieldUpdateOperationsInput | number;
+    isMaster?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+/**
+ * Count Type WordBookRecordCountOutputType
+ */
+export type WordBookRecordCountOutputType = {
+    reviewLogs: number;
+};
+export type WordBookRecordCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    reviewLogs?: boolean | WordBookRecordCountOutputTypeCountReviewLogsArgs;
+};
+/**
+ * WordBookRecordCountOutputType without action
+ */
+export type WordBookRecordCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecordCountOutputType
+     */
+    select?: Prisma.WordBookRecordCountOutputTypeSelect<ExtArgs> | null;
+};
+/**
+ * WordBookRecordCountOutputType without action
+ */
+export type WordBookRecordCountOutputTypeCountReviewLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.ReviewLogWhereInput;
+};
+export type WordBookRecordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    wordId?: boolean;
+    userId?: boolean;
+    easinessFactor?: boolean;
+    interval?: boolean;
+    reps?: boolean;
+    nextReviewAt?: boolean;
+    wrongCount?: boolean;
+    isMaster?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    word?: boolean | Prisma.WordBookDefaultArgs<ExtArgs>;
+    reviewLogs?: boolean | Prisma.WordBookRecord$reviewLogsArgs<ExtArgs>;
+    _count?: boolean | Prisma.WordBookRecordCountOutputTypeDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["wordBookRecord"]>;
+export type WordBookRecordSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    wordId?: boolean;
+    userId?: boolean;
+    easinessFactor?: boolean;
+    interval?: boolean;
+    reps?: boolean;
+    nextReviewAt?: boolean;
+    wrongCount?: boolean;
+    isMaster?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    word?: boolean | Prisma.WordBookDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["wordBookRecord"]>;
+export type WordBookRecordSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    wordId?: boolean;
+    userId?: boolean;
+    easinessFactor?: boolean;
+    interval?: boolean;
+    reps?: boolean;
+    nextReviewAt?: boolean;
+    wrongCount?: boolean;
+    isMaster?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    word?: boolean | Prisma.WordBookDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["wordBookRecord"]>;
+export type WordBookRecordSelectScalar = {
+    id?: boolean;
+    wordId?: boolean;
+    userId?: boolean;
+    easinessFactor?: boolean;
+    interval?: boolean;
+    reps?: boolean;
+    nextReviewAt?: boolean;
+    wrongCount?: boolean;
+    isMaster?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type WordBookRecordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "wordId" | "userId" | "easinessFactor" | "interval" | "reps" | "nextReviewAt" | "wrongCount" | "isMaster" | "createdAt" | "updatedAt", ExtArgs["result"]["wordBookRecord"]>;
+export type WordBookRecordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    word?: boolean | Prisma.WordBookDefaultArgs<ExtArgs>;
+    reviewLogs?: boolean | Prisma.WordBookRecord$reviewLogsArgs<ExtArgs>;
+    _count?: boolean | Prisma.WordBookRecordCountOutputTypeDefaultArgs<ExtArgs>;
+};
+export type WordBookRecordIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    word?: boolean | Prisma.WordBookDefaultArgs<ExtArgs>;
+};
+export type WordBookRecordIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+    word?: boolean | Prisma.WordBookDefaultArgs<ExtArgs>;
+};
+export type $WordBookRecordPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "WordBookRecord";
+    objects: {
+        user: Prisma.$UserPayload<ExtArgs>;
+        word: Prisma.$WordBookPayload<ExtArgs>;
+        reviewLogs: Prisma.$ReviewLogPayload<ExtArgs>[];
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        wordId: string;
+        userId: string;
+        easinessFactor: number;
+        interval: number;
+        reps: number;
+        nextReviewAt: Date;
+        wrongCount: number;
+        isMaster: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["wordBookRecord"]>;
+    composites: {};
+};
+export type WordBookRecordGetPayload<S extends boolean | null | undefined | WordBookRecordDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload, S>;
+export type WordBookRecordCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<WordBookRecordFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: WordBookRecordCountAggregateInputType | true;
+};
+export interface WordBookRecordDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['WordBookRecord'];
+        meta: {
+            name: 'WordBookRecord';
+        };
+    };
+    /**
+     * Find zero or one WordBookRecord that matches the filter.
+     * @param {WordBookRecordFindUniqueArgs} args - Arguments to find a WordBookRecord
+     * @example
+     * // Get one WordBookRecord
+     * const wordBookRecord = await prisma.wordBookRecord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WordBookRecordFindUniqueArgs>(args: Prisma.SelectSubset<T, WordBookRecordFindUniqueArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one WordBookRecord that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WordBookRecordFindUniqueOrThrowArgs} args - Arguments to find a WordBookRecord
+     * @example
+     * // Get one WordBookRecord
+     * const wordBookRecord = await prisma.wordBookRecord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WordBookRecordFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, WordBookRecordFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first WordBookRecord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordFindFirstArgs} args - Arguments to find a WordBookRecord
+     * @example
+     * // Get one WordBookRecord
+     * const wordBookRecord = await prisma.wordBookRecord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WordBookRecordFindFirstArgs>(args?: Prisma.SelectSubset<T, WordBookRecordFindFirstArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first WordBookRecord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordFindFirstOrThrowArgs} args - Arguments to find a WordBookRecord
+     * @example
+     * // Get one WordBookRecord
+     * const wordBookRecord = await prisma.wordBookRecord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WordBookRecordFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, WordBookRecordFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more WordBookRecords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WordBookRecords
+     * const wordBookRecords = await prisma.wordBookRecord.findMany()
+     *
+     * // Get first 10 WordBookRecords
+     * const wordBookRecords = await prisma.wordBookRecord.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const wordBookRecordWithIdOnly = await prisma.wordBookRecord.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends WordBookRecordFindManyArgs>(args?: Prisma.SelectSubset<T, WordBookRecordFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a WordBookRecord.
+     * @param {WordBookRecordCreateArgs} args - Arguments to create a WordBookRecord.
+     * @example
+     * // Create one WordBookRecord
+     * const WordBookRecord = await prisma.wordBookRecord.create({
+     *   data: {
+     *     // ... data to create a WordBookRecord
+     *   }
+     * })
+     *
+     */
+    create<T extends WordBookRecordCreateArgs>(args: Prisma.SelectSubset<T, WordBookRecordCreateArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many WordBookRecords.
+     * @param {WordBookRecordCreateManyArgs} args - Arguments to create many WordBookRecords.
+     * @example
+     * // Create many WordBookRecords
+     * const wordBookRecord = await prisma.wordBookRecord.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends WordBookRecordCreateManyArgs>(args?: Prisma.SelectSubset<T, WordBookRecordCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many WordBookRecords and returns the data saved in the database.
+     * @param {WordBookRecordCreateManyAndReturnArgs} args - Arguments to create many WordBookRecords.
+     * @example
+     * // Create many WordBookRecords
+     * const wordBookRecord = await prisma.wordBookRecord.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many WordBookRecords and only return the `id`
+     * const wordBookRecordWithIdOnly = await prisma.wordBookRecord.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends WordBookRecordCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, WordBookRecordCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a WordBookRecord.
+     * @param {WordBookRecordDeleteArgs} args - Arguments to delete one WordBookRecord.
+     * @example
+     * // Delete one WordBookRecord
+     * const WordBookRecord = await prisma.wordBookRecord.delete({
+     *   where: {
+     *     // ... filter to delete one WordBookRecord
+     *   }
+     * })
+     *
+     */
+    delete<T extends WordBookRecordDeleteArgs>(args: Prisma.SelectSubset<T, WordBookRecordDeleteArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one WordBookRecord.
+     * @param {WordBookRecordUpdateArgs} args - Arguments to update one WordBookRecord.
+     * @example
+     * // Update one WordBookRecord
+     * const wordBookRecord = await prisma.wordBookRecord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends WordBookRecordUpdateArgs>(args: Prisma.SelectSubset<T, WordBookRecordUpdateArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more WordBookRecords.
+     * @param {WordBookRecordDeleteManyArgs} args - Arguments to filter WordBookRecords to delete.
+     * @example
+     * // Delete a few WordBookRecords
+     * const { count } = await prisma.wordBookRecord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends WordBookRecordDeleteManyArgs>(args?: Prisma.SelectSubset<T, WordBookRecordDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more WordBookRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WordBookRecords
+     * const wordBookRecord = await prisma.wordBookRecord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends WordBookRecordUpdateManyArgs>(args: Prisma.SelectSubset<T, WordBookRecordUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more WordBookRecords and returns the data updated in the database.
+     * @param {WordBookRecordUpdateManyAndReturnArgs} args - Arguments to update many WordBookRecords.
+     * @example
+     * // Update many WordBookRecords
+     * const wordBookRecord = await prisma.wordBookRecord.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more WordBookRecords and only return the `id`
+     * const wordBookRecordWithIdOnly = await prisma.wordBookRecord.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends WordBookRecordUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, WordBookRecordUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one WordBookRecord.
+     * @param {WordBookRecordUpsertArgs} args - Arguments to update or create a WordBookRecord.
+     * @example
+     * // Update or create a WordBookRecord
+     * const wordBookRecord = await prisma.wordBookRecord.upsert({
+     *   create: {
+     *     // ... data to create a WordBookRecord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WordBookRecord we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WordBookRecordUpsertArgs>(args: Prisma.SelectSubset<T, WordBookRecordUpsertArgs<ExtArgs>>): Prisma.Prisma__WordBookRecordClient<runtime.Types.Result.GetResult<Prisma.$WordBookRecordPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of WordBookRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordCountArgs} args - Arguments to filter WordBookRecords to count.
+     * @example
+     * // Count the number of WordBookRecords
+     * const count = await prisma.wordBookRecord.count({
+     *   where: {
+     *     // ... the filter for the WordBookRecords we want to count
+     *   }
+     * })
+    **/
+    count<T extends WordBookRecordCountArgs>(args?: Prisma.Subset<T, WordBookRecordCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], WordBookRecordCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a WordBookRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WordBookRecordAggregateArgs>(args: Prisma.Subset<T, WordBookRecordAggregateArgs>): Prisma.PrismaPromise<GetWordBookRecordAggregateType<T>>;
+    /**
+     * Group by WordBookRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WordBookRecordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends WordBookRecordGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: WordBookRecordGroupByArgs['orderBy'];
+    } : {
+        orderBy?: WordBookRecordGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, WordBookRecordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWordBookRecordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the WordBookRecord model
+     */
+    readonly fields: WordBookRecordFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for WordBookRecord.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__WordBookRecordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    word<T extends Prisma.WordBookDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordBookDefaultArgs<ExtArgs>>): Prisma.Prisma__WordBookClient<runtime.Types.Result.GetResult<Prisma.$WordBookPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    reviewLogs<T extends Prisma.WordBookRecord$reviewLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.WordBookRecord$reviewLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the WordBookRecord model
+ */
+export interface WordBookRecordFieldRefs {
+    readonly id: Prisma.FieldRef<"WordBookRecord", 'String'>;
+    readonly wordId: Prisma.FieldRef<"WordBookRecord", 'String'>;
+    readonly userId: Prisma.FieldRef<"WordBookRecord", 'String'>;
+    readonly easinessFactor: Prisma.FieldRef<"WordBookRecord", 'Float'>;
+    readonly interval: Prisma.FieldRef<"WordBookRecord", 'Int'>;
+    readonly reps: Prisma.FieldRef<"WordBookRecord", 'Int'>;
+    readonly nextReviewAt: Prisma.FieldRef<"WordBookRecord", 'DateTime'>;
+    readonly wrongCount: Prisma.FieldRef<"WordBookRecord", 'Int'>;
+    readonly isMaster: Prisma.FieldRef<"WordBookRecord", 'Boolean'>;
+    readonly createdAt: Prisma.FieldRef<"WordBookRecord", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"WordBookRecord", 'DateTime'>;
+}
+/**
+ * WordBookRecord findUnique
+ */
+export type WordBookRecordFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * Filter, which WordBookRecord to fetch.
+     */
+    where: Prisma.WordBookRecordWhereUniqueInput;
+};
+/**
+ * WordBookRecord findUniqueOrThrow
+ */
+export type WordBookRecordFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * Filter, which WordBookRecord to fetch.
+     */
+    where: Prisma.WordBookRecordWhereUniqueInput;
+};
+/**
+ * WordBookRecord findFirst
+ */
+export type WordBookRecordFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * Filter, which WordBookRecord to fetch.
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of WordBookRecords to fetch.
+     */
+    orderBy?: Prisma.WordBookRecordOrderByWithRelationInput | Prisma.WordBookRecordOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for WordBookRecords.
+     */
+    cursor?: Prisma.WordBookRecordWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` WordBookRecords from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` WordBookRecords.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of WordBookRecords.
+     */
+    distinct?: Prisma.WordBookRecordScalarFieldEnum | Prisma.WordBookRecordScalarFieldEnum[];
+};
+/**
+ * WordBookRecord findFirstOrThrow
+ */
+export type WordBookRecordFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * Filter, which WordBookRecord to fetch.
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of WordBookRecords to fetch.
+     */
+    orderBy?: Prisma.WordBookRecordOrderByWithRelationInput | Prisma.WordBookRecordOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for WordBookRecords.
+     */
+    cursor?: Prisma.WordBookRecordWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` WordBookRecords from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` WordBookRecords.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of WordBookRecords.
+     */
+    distinct?: Prisma.WordBookRecordScalarFieldEnum | Prisma.WordBookRecordScalarFieldEnum[];
+};
+/**
+ * WordBookRecord findMany
+ */
+export type WordBookRecordFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * Filter, which WordBookRecords to fetch.
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of WordBookRecords to fetch.
+     */
+    orderBy?: Prisma.WordBookRecordOrderByWithRelationInput | Prisma.WordBookRecordOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing WordBookRecords.
+     */
+    cursor?: Prisma.WordBookRecordWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` WordBookRecords from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` WordBookRecords.
+     */
+    skip?: number;
+    distinct?: Prisma.WordBookRecordScalarFieldEnum | Prisma.WordBookRecordScalarFieldEnum[];
+};
+/**
+ * WordBookRecord create
+ */
+export type WordBookRecordCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a WordBookRecord.
+     */
+    data: Prisma.XOR<Prisma.WordBookRecordCreateInput, Prisma.WordBookRecordUncheckedCreateInput>;
+};
+/**
+ * WordBookRecord createMany
+ */
+export type WordBookRecordCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WordBookRecords.
+     */
+    data: Prisma.WordBookRecordCreateManyInput | Prisma.WordBookRecordCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * WordBookRecord createManyAndReturn
+ */
+export type WordBookRecordCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * The data used to create many WordBookRecords.
+     */
+    data: Prisma.WordBookRecordCreateManyInput | Prisma.WordBookRecordCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * WordBookRecord update
+ */
+export type WordBookRecordUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a WordBookRecord.
+     */
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateInput, Prisma.WordBookRecordUncheckedUpdateInput>;
+    /**
+     * Choose, which WordBookRecord to update.
+     */
+    where: Prisma.WordBookRecordWhereUniqueInput;
+};
+/**
+ * WordBookRecord updateMany
+ */
+export type WordBookRecordUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WordBookRecords.
+     */
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateManyMutationInput, Prisma.WordBookRecordUncheckedUpdateManyInput>;
+    /**
+     * Filter which WordBookRecords to update
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * Limit how many WordBookRecords to update.
+     */
+    limit?: number;
+};
+/**
+ * WordBookRecord updateManyAndReturn
+ */
+export type WordBookRecordUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * The data used to update WordBookRecords.
+     */
+    data: Prisma.XOR<Prisma.WordBookRecordUpdateManyMutationInput, Prisma.WordBookRecordUncheckedUpdateManyInput>;
+    /**
+     * Filter which WordBookRecords to update
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * Limit how many WordBookRecords to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * WordBookRecord upsert
+ */
+export type WordBookRecordUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the WordBookRecord to update in case it exists.
+     */
+    where: Prisma.WordBookRecordWhereUniqueInput;
+    /**
+     * In case the WordBookRecord found by the `where` argument doesn't exist, create a new WordBookRecord with this data.
+     */
+    create: Prisma.XOR<Prisma.WordBookRecordCreateInput, Prisma.WordBookRecordUncheckedCreateInput>;
+    /**
+     * In case the WordBookRecord was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.WordBookRecordUpdateInput, Prisma.WordBookRecordUncheckedUpdateInput>;
+};
+/**
+ * WordBookRecord delete
+ */
+export type WordBookRecordDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+    /**
+     * Filter which WordBookRecord to delete.
+     */
+    where: Prisma.WordBookRecordWhereUniqueInput;
+};
+/**
+ * WordBookRecord deleteMany
+ */
+export type WordBookRecordDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which WordBookRecords to delete
+     */
+    where?: Prisma.WordBookRecordWhereInput;
+    /**
+     * Limit how many WordBookRecords to delete.
+     */
+    limit?: number;
+};
+/**
+ * WordBookRecord.reviewLogs
+ */
+export type WordBookRecord$reviewLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ReviewLog
+     */
+    select?: Prisma.ReviewLogSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the ReviewLog
+     */
+    omit?: Prisma.ReviewLogOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.ReviewLogInclude<ExtArgs> | null;
+    where?: Prisma.ReviewLogWhereInput;
+    orderBy?: Prisma.ReviewLogOrderByWithRelationInput | Prisma.ReviewLogOrderByWithRelationInput[];
+    cursor?: Prisma.ReviewLogWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: Prisma.ReviewLogScalarFieldEnum | Prisma.ReviewLogScalarFieldEnum[];
+};
+/**
+ * WordBookRecord without action
+ */
+export type WordBookRecordDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WordBookRecord
+     */
+    select?: Prisma.WordBookRecordSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the WordBookRecord
+     */
+    omit?: Prisma.WordBookRecordOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.WordBookRecordInclude<ExtArgs> | null;
+};
+export {};
+//# sourceMappingURL=WordBookRecord.d.ts.map
