@@ -1,114 +1,64 @@
 # AGENTS.md
 
-AI 编码代理指南 - 本文件为 AI 编码代理提供项目上下文和编码规范。
+**Generated:** 2026-03-13
+**Commit:** 7acd27c
+**Branch:** main
 
-## 项目概述
+## OVERVIEW
 
-这是一个英语学习平台，采用 pnpm monorepo 架构，包含以下子项目：
+English learning platform with AI features. pnpm monorepo: NestJS backend, Vue 3 frontend, FastAPI AI service.
 
-- **`backend/server`**: NestJS 后端服务 (Node.js + TypeScript)
-- **`fronted`**: Vue 3 前端应用 (Vite + TypeScript)
-- **`backend/ai`**: Python FastAPI AI 服务
-- **`common`**: 共享类型定义
-- **`config`**: 共享配置
+## STRUCTURE
 
-## 常用命令
+```
+├── backend/server/   # NestJS REST API + WebSocket (port 3000)
+├── backend/ai/       # FastAPI AI service (port 8000) - NOT in pnpm workspace
+├── fronted/          # Vue 3 frontend (port 5173)
+├── common/           # Shared TypeScript types (@en/common)
+├── config/           # Shared configuration
+└── insertDB/         # Database seed utility - NOT in pnpm workspace
+```
 
-### 根目录
+## WHERE TO LOOK
+
+| Task | Location |
+|------|----------|
+| NestJS module | `backend/server/apps/server/src/` |
+| Prisma models | `backend/server/prisma/schema.prisma` |
+| Vue pages | `fronted/src/views/` |
+| AI workflows | `backend/ai/src/routers/ai/` |
+| Shared types | `common/` - domain-based subdirs |
+| API routes | Backend: `*/{module}/{module}.controller.ts` |
+
+## COMMANDS
 
 ```bash
-pnpm dev              # 同时启动前端、后端、AI 服务
-pnpm dev:fronted      # 仅启动前端
-pnpm dev:server       # 仅启动后端
-pnpm dev:ai           # 仅启动 AI 服务
+pnpm dev              # Start all services (frontend + backend + AI)
+pnpm dev:fronted      # Frontend only
+pnpm dev:server       # Backend only
+pnpm dev:ai           # AI service only
 ```
 
-### 后端 (backend/server)
+## CONVENTIONS
 
-```bash
-cd backend/server
-pnpm start:dev        # 开发模式
-pnpm build            # 构建
-pnpm format           # 代码格式化
-pnpm lint             # ESLint 检查并修复
-pnpm test             # 运行所有测试
-pnpm test -- path/to/test.spec.ts  # 运行单个测试文件
-pnpm test:watch       # 测试监听模式
-pnpm test:cov         # 测试覆盖率
-pnpm test:e2e         # E2E 测试
+### Import Aliases
+```typescript
+import { PrismaService } from '@lib/shared'     // backend/server/libs/shared
+import type { User } from '@en/common/user'      // common package
 ```
 
-### 前端 (fronted)
+### Naming
+| Type | Convention | Example |
+|------|------------|---------|
+| Files | kebab-case | `user.service.ts` |
+| Classes | PascalCase | `UserService` |
+| Vue components | PascalCase | `LoginForm.vue` |
+| Routes | kebab-case | `chat-normal` |
 
-```bash
-cd fronted
-pnpm dev              # 开发模式
-pnpm type-check       # 类型检查
-pnpm build            # 构建
-pnpm format           # 代码格式化
-```
-
-### AI 服务 (backend/ai)
-
-```bash
-cd backend/ai
-uv run uvicorn src.main:app --reload --port 8000  # 开发模式
-```
-
-## 项目架构
-
-### 后端架构
-
-```
-backend/server/
-├── apps/server/src/          # 主应用
-│   ├── main.ts               # 入口：全局前缀 /api，版本控制 URI v1
-│   ├── app.module.ts         # 根模块
-│   ├── user/                 # 用户模块
-│   ├── auth/                 # 认证模块
-│   ├── course/               # 课程模块
-│   ├── pay/                  # 支付模块
-│   ├── socket/               # WebSocket 模块
-│   └── learn/                # 学习模块
-└── libs/shared/src/          # 共享库
-    ├── prisma/               # Prisma 服务
-    ├── auth/                 # 认证守卫
-    ├── httpfilter/           # HTTP 异常过滤器
-    └── response/             # 响应服务
-```
-
-**重要配置**:
-- HTTP 路由格式: `http://localhost:3000/api/v1/{resource}`
-- WebSocket 命名空间: `ws://localhost:3000/{namespace}` (不受全局前缀影响)
-
-### 前端架构
-
-```
-fronted/src/
-├── App.vue                   # 根组件
-├── views/                    # 页面视图
-│   ├── Home/                 # 首页
-│   ├── Chat/                 # AI 聊天模块 (normal/composition/speak/vocabulary)
-│   ├── Course/               # 课程模块
-│   ├── WordBook/             # 单词本
-│   └── Setting/              # 设置
-├── components/               # 公共组件
-├── layout/                   # 布局组件
-└── stores/                   # Pinia 状态管理
-```
-
-### AI 服务架构
-
-```
-backend/ai/src/
-├── main.py                   # FastAPI 入口
-├── routers/                  # 路由模块
-│   ├── ai/                   # AI 功能
-│   │   ├── normal/           # 日常对话
-│   │   ├── composition/      # 作文批改
-│   │   └── speak/            # 口语练习
-│   └── user/                 # 用户管理
-└── services/                 # 服务层
+### Response Format (Backend)
+```typescript
+{ success: true, message: "...", data: {} }
+{ success: false, message: "...", data: null }
 ```
 
 ## 代码风格规范
