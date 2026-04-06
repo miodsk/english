@@ -57,7 +57,22 @@ export const ModelName = {
   WordBook: 'WordBook',
   PaymentRecord: 'PaymentRecord',
   CourseRecord: 'CourseRecord',
-  Course: 'Course'
+  Course: 'Course',
+  checkpoint_blobs: 'checkpoint_blobs',
+  checkpoint_migrations: 'checkpoint_migrations',
+  checkpoint_writes: 'checkpoint_writes',
+  checkpoints: 'checkpoints',
+  composition_history_messages: 'composition_history_messages',
+  composition_history_threads: 'composition_history_threads',
+  normal_history_messages: 'normal_history_messages',
+  normal_history_threads: 'normal_history_threads',
+  speak_history_messages: 'speak_history_messages',
+  speak_history_threads: 'speak_history_threads',
+  Visitor: 'Visitor',
+  PageView: 'PageView',
+  TrackEvent: 'TrackEvent',
+  PerformanceEntry: 'PerformanceEntry',
+  ErrorEntry: 'ErrorEntry'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -105,8 +120,8 @@ export const WordBookRecordScalarFieldEnum = {
   interval: 'interval',
   reps: 'reps',
   nextReviewAt: 'nextReviewAt',
-  wrongCount: 'wrongCount',
   isMaster: 'isMaster',
+  wrongCount: 'wrongCount',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -198,12 +213,218 @@ export const CourseScalarFieldEnum = {
 export type CourseScalarFieldEnum = (typeof CourseScalarFieldEnum)[keyof typeof CourseScalarFieldEnum]
 
 
+export const Checkpoint_blobsScalarFieldEnum = {
+  thread_id: 'thread_id',
+  checkpoint_ns: 'checkpoint_ns',
+  channel: 'channel',
+  version: 'version',
+  type: 'type',
+  blob: 'blob'
+} as const
+
+export type Checkpoint_blobsScalarFieldEnum = (typeof Checkpoint_blobsScalarFieldEnum)[keyof typeof Checkpoint_blobsScalarFieldEnum]
+
+
+export const Checkpoint_migrationsScalarFieldEnum = {
+  v: 'v'
+} as const
+
+export type Checkpoint_migrationsScalarFieldEnum = (typeof Checkpoint_migrationsScalarFieldEnum)[keyof typeof Checkpoint_migrationsScalarFieldEnum]
+
+
+export const Checkpoint_writesScalarFieldEnum = {
+  thread_id: 'thread_id',
+  checkpoint_ns: 'checkpoint_ns',
+  checkpoint_id: 'checkpoint_id',
+  task_id: 'task_id',
+  idx: 'idx',
+  channel: 'channel',
+  type: 'type',
+  blob: 'blob',
+  task_path: 'task_path'
+} as const
+
+export type Checkpoint_writesScalarFieldEnum = (typeof Checkpoint_writesScalarFieldEnum)[keyof typeof Checkpoint_writesScalarFieldEnum]
+
+
+export const CheckpointsScalarFieldEnum = {
+  thread_id: 'thread_id',
+  checkpoint_ns: 'checkpoint_ns',
+  checkpoint_id: 'checkpoint_id',
+  parent_checkpoint_id: 'parent_checkpoint_id',
+  type: 'type',
+  checkpoint: 'checkpoint',
+  metadata: 'metadata'
+} as const
+
+export type CheckpointsScalarFieldEnum = (typeof CheckpointsScalarFieldEnum)[keyof typeof CheckpointsScalarFieldEnum]
+
+
+export const Composition_history_messagesScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  thread_id: 'thread_id',
+  role: 'role',
+  content: 'content',
+  created_at: 'created_at'
+} as const
+
+export type Composition_history_messagesScalarFieldEnum = (typeof Composition_history_messagesScalarFieldEnum)[keyof typeof Composition_history_messagesScalarFieldEnum]
+
+
+export const Composition_history_threadsScalarFieldEnum = {
+  user_id: 'user_id',
+  thread_id: 'thread_id',
+  session_id: 'session_id',
+  topic: 'topic',
+  exam_type: 'exam_type',
+  task_type: 'task_type',
+  last_band_score: 'last_band_score',
+  preview: 'preview',
+  updated_at: 'updated_at'
+} as const
+
+export type Composition_history_threadsScalarFieldEnum = (typeof Composition_history_threadsScalarFieldEnum)[keyof typeof Composition_history_threadsScalarFieldEnum]
+
+
+export const Normal_history_messagesScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  thread_id: 'thread_id',
+  role: 'role',
+  content: 'content',
+  created_at: 'created_at'
+} as const
+
+export type Normal_history_messagesScalarFieldEnum = (typeof Normal_history_messagesScalarFieldEnum)[keyof typeof Normal_history_messagesScalarFieldEnum]
+
+
+export const Normal_history_threadsScalarFieldEnum = {
+  user_id: 'user_id',
+  thread_id: 'thread_id',
+  session_id: 'session_id',
+  mode: 'mode',
+  preview: 'preview',
+  updated_at: 'updated_at'
+} as const
+
+export type Normal_history_threadsScalarFieldEnum = (typeof Normal_history_threadsScalarFieldEnum)[keyof typeof Normal_history_threadsScalarFieldEnum]
+
+
+export const Speak_history_messagesScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  thread_id: 'thread_id',
+  role: 'role',
+  content: 'content',
+  created_at: 'created_at'
+} as const
+
+export type Speak_history_messagesScalarFieldEnum = (typeof Speak_history_messagesScalarFieldEnum)[keyof typeof Speak_history_messagesScalarFieldEnum]
+
+
+export const Speak_history_threadsScalarFieldEnum = {
+  user_id: 'user_id',
+  thread_id: 'thread_id',
+  session_id: 'session_id',
+  topic: 'topic',
+  preview: 'preview',
+  updated_at: 'updated_at'
+} as const
+
+export type Speak_history_threadsScalarFieldEnum = (typeof Speak_history_threadsScalarFieldEnum)[keyof typeof Speak_history_threadsScalarFieldEnum]
+
+
+export const VisitorScalarFieldEnum = {
+  id: 'id',
+  anonymousId: 'anonymousId',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  browser: 'browser',
+  os: 'os',
+  device: 'device'
+} as const
+
+export type VisitorScalarFieldEnum = (typeof VisitorScalarFieldEnum)[keyof typeof VisitorScalarFieldEnum]
+
+
+export const PageViewScalarFieldEnum = {
+  id: 'id',
+  visitorId: 'visitorId',
+  url: 'url',
+  referrer: 'referrer',
+  path: 'path',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PageViewScalarFieldEnum = (typeof PageViewScalarFieldEnum)[keyof typeof PageViewScalarFieldEnum]
+
+
+export const TrackEventScalarFieldEnum = {
+  id: 'id',
+  visitorId: 'visitorId',
+  event: 'event',
+  payload: 'payload',
+  url: 'url',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TrackEventScalarFieldEnum = (typeof TrackEventScalarFieldEnum)[keyof typeof TrackEventScalarFieldEnum]
+
+
+export const PerformanceEntryScalarFieldEnum = {
+  id: 'id',
+  visitorId: 'visitorId',
+  fp: 'fp',
+  fcp: 'fcp',
+  lcp: 'lcp',
+  inp: 'inp',
+  cls: 'cls',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PerformanceEntryScalarFieldEnum = (typeof PerformanceEntryScalarFieldEnum)[keyof typeof PerformanceEntryScalarFieldEnum]
+
+
+export const ErrorEntryScalarFieldEnum = {
+  id: 'id',
+  visitorId: 'visitorId',
+  error: 'error',
+  message: 'message',
+  stack: 'stack',
+  url: 'url',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ErrorEntryScalarFieldEnum = (typeof ErrorEntryScalarFieldEnum)[keyof typeof ErrorEntryScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -220,4 +441,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

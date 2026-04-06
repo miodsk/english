@@ -14,6 +14,7 @@ def get_timestamp():
 
 
 dashscope.api_key = Config.DASHSCOPE_API_KEY
+# DashScope TTS 服务通过 WebSocket 协议进行推流回调
 dashscope.base_websocket_api_url = "wss://dashscope.aliyuncs.com/api-ws/v1/inference"
 
 MODEL = "cosyvoice-v3.5-plus"
@@ -57,7 +58,7 @@ class SyncAudioCallback(ResultCallback):
         pass
 
     def on_data(self, data: bytes) -> None:
-        """累积所有音频数据"""
+        """累积 WebSocket 回调返回的音频二进制片段。"""
         if data and len(data) > 0:
             self.audio_data.extend(data)
 
@@ -86,7 +87,7 @@ class StreamingTTS:
             voice=VOICE,
             format=AudioFormat.MP3_22050HZ_MONO_256KBPS,
             callback=callback,
-            language_hints=['en'],
+            language_hints=["en"],
             instruction="语气要充满讽刺和不屑，在关键词上加重读音，句尾语调略微上扬。",
         )
 

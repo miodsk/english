@@ -14,6 +14,7 @@
   "dependencies": {
     "@en/common": "workspace:*",
     "@en/config": "workspace:*",
+    "@en/tracker": "workspace:*",
     "@microsoft/fetch-event-source": "^2.0.1",
     "@tailwindcss/vite": "^4.2.1",
     "@types/dom-speech-recognition": "^0.0.7",

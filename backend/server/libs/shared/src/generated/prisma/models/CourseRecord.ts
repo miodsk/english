@@ -198,9 +198,9 @@ export type CourseRecordWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"CourseRecord"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CourseRecord"> | Date | string
   paymentRecordId?: Prisma.StringNullableFilter<"CourseRecord"> | string | null
+  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
   paymentRecord?: Prisma.XOR<Prisma.PaymentRecordNullableScalarRelationFilter, Prisma.PaymentRecordWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
 }
 
 export type CourseRecordOrderByWithRelationInput = {
@@ -211,9 +211,9 @@ export type CourseRecordOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   paymentRecordId?: Prisma.SortOrderInput | Prisma.SortOrder
+  course?: Prisma.CourseOrderByWithRelationInput
   paymentRecord?: Prisma.PaymentRecordOrderByWithRelationInput
   user?: Prisma.UserOrderByWithRelationInput
-  course?: Prisma.CourseOrderByWithRelationInput
 }
 
 export type CourseRecordWhereUniqueInput = Prisma.AtLeast<{
@@ -228,9 +228,9 @@ export type CourseRecordWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"CourseRecord"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CourseRecord"> | Date | string
   paymentRecordId?: Prisma.StringNullableFilter<"CourseRecord"> | string | null
+  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
   paymentRecord?: Prisma.XOR<Prisma.PaymentRecordNullableScalarRelationFilter, Prisma.PaymentRecordWhereInput> | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  course?: Prisma.XOR<Prisma.CourseScalarRelationFilter, Prisma.CourseWhereInput>
 }, "id" | "userId_courseId">
 
 export type CourseRecordOrderByWithAggregationInput = {
@@ -264,9 +264,9 @@ export type CourseRecordCreateInput = {
   isPurchased?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  course: Prisma.CourseCreateNestedOneWithoutCourseRecordsInput
   paymentRecord?: Prisma.PaymentRecordCreateNestedOneWithoutCourseRecordsInput
   user: Prisma.UserCreateNestedOneWithoutCourseRecordsInput
-  course: Prisma.CourseCreateNestedOneWithoutCourseRecordsInput
 }
 
 export type CourseRecordUncheckedCreateInput = {
@@ -284,9 +284,9 @@ export type CourseRecordUpdateInput = {
   isPurchased?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  course?: Prisma.CourseUpdateOneRequiredWithoutCourseRecordsNestedInput
   paymentRecord?: Prisma.PaymentRecordUpdateOneWithoutCourseRecordsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutCourseRecordsNestedInput
-  course?: Prisma.CourseUpdateOneRequiredWithoutCourseRecordsNestedInput
 }
 
 export type CourseRecordUncheckedUpdateInput = {
@@ -502,8 +502,8 @@ export type CourseRecordCreateWithoutUserInput = {
   isPurchased?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  paymentRecord?: Prisma.PaymentRecordCreateNestedOneWithoutCourseRecordsInput
   course: Prisma.CourseCreateNestedOneWithoutCourseRecordsInput
+  paymentRecord?: Prisma.PaymentRecordCreateNestedOneWithoutCourseRecordsInput
 }
 
 export type CourseRecordUncheckedCreateWithoutUserInput = {
@@ -559,8 +559,8 @@ export type CourseRecordCreateWithoutPaymentRecordInput = {
   isPurchased?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutCourseRecordsInput
   course: Prisma.CourseCreateNestedOneWithoutCourseRecordsInput
+  user: Prisma.UserCreateNestedOneWithoutCourseRecordsInput
 }
 
 export type CourseRecordUncheckedCreateWithoutPaymentRecordInput = {
@@ -656,8 +656,8 @@ export type CourseRecordUpdateWithoutUserInput = {
   isPurchased?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  paymentRecord?: Prisma.PaymentRecordUpdateOneWithoutCourseRecordsNestedInput
   course?: Prisma.CourseUpdateOneRequiredWithoutCourseRecordsNestedInput
+  paymentRecord?: Prisma.PaymentRecordUpdateOneWithoutCourseRecordsNestedInput
 }
 
 export type CourseRecordUncheckedUpdateWithoutUserInput = {
@@ -692,8 +692,8 @@ export type CourseRecordUpdateWithoutPaymentRecordInput = {
   isPurchased?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutCourseRecordsNestedInput
   course?: Prisma.CourseUpdateOneRequiredWithoutCourseRecordsNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutCourseRecordsNestedInput
 }
 
 export type CourseRecordUncheckedUpdateWithoutPaymentRecordInput = {
@@ -760,9 +760,9 @@ export type CourseRecordSelect<ExtArgs extends runtime.Types.Extensions.Internal
   createdAt?: boolean
   updatedAt?: boolean
   paymentRecordId?: boolean
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   paymentRecord?: boolean | Prisma.CourseRecord$paymentRecordArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["courseRecord"]>
 
 export type CourseRecordSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -773,9 +773,9 @@ export type CourseRecordSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   createdAt?: boolean
   updatedAt?: boolean
   paymentRecordId?: boolean
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   paymentRecord?: boolean | Prisma.CourseRecord$paymentRecordArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["courseRecord"]>
 
 export type CourseRecordSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -786,9 +786,9 @@ export type CourseRecordSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   createdAt?: boolean
   updatedAt?: boolean
   paymentRecordId?: boolean
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   paymentRecord?: boolean | Prisma.CourseRecord$paymentRecordArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["courseRecord"]>
 
 export type CourseRecordSelectScalar = {
@@ -803,27 +803,27 @@ export type CourseRecordSelectScalar = {
 
 export type CourseRecordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "courseId" | "isPurchased" | "createdAt" | "updatedAt" | "paymentRecordId", ExtArgs["result"]["courseRecord"]>
 export type CourseRecordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   paymentRecord?: boolean | Prisma.CourseRecord$paymentRecordArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
 }
 export type CourseRecordIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   paymentRecord?: boolean | Prisma.CourseRecord$paymentRecordArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
 }
 export type CourseRecordIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
   paymentRecord?: boolean | Prisma.CourseRecord$paymentRecordArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  course?: boolean | Prisma.CourseDefaultArgs<ExtArgs>
 }
 
 export type $CourseRecordPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CourseRecord"
   objects: {
+    course: Prisma.$CoursePayload<ExtArgs>
     paymentRecord: Prisma.$PaymentRecordPayload<ExtArgs> | null
     user: Prisma.$UserPayload<ExtArgs>
-    course: Prisma.$CoursePayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1227,9 +1227,9 @@ readonly fields: CourseRecordFieldRefs;
  */
 export interface Prisma__CourseRecordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  course<T extends Prisma.CourseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CourseDefaultArgs<ExtArgs>>): Prisma.Prisma__CourseClient<runtime.Types.Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   paymentRecord<T extends Prisma.CourseRecord$paymentRecordArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CourseRecord$paymentRecordArgs<ExtArgs>>): Prisma.Prisma__PaymentRecordClient<runtime.Types.Result.GetResult<Prisma.$PaymentRecordPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  course<T extends Prisma.CourseDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CourseDefaultArgs<ExtArgs>>): Prisma.Prisma__CourseClient<runtime.Types.Result.GetResult<Prisma.$CoursePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

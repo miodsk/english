@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>hello world</h1>
+<button onclick="history.pushState({}, '', '/home')">pushState</button>
+<button onclick="history.replaceState({}, '', '/home')">replaceState</button>
+<button onclick="history.back()">back</button>
+<button onclick="history.forward()">forward</button>
+<button onclick="window.location.hash = '#/home'">hashChange</button>
+<script src="index.ts" type="module"></script>
+</body>
+</html>

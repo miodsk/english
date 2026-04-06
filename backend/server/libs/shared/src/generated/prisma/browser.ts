@@ -52,3 +52,78 @@ export type CourseRecord = Prisma.CourseRecordModel
  * 
  */
 export type Course = Prisma.CourseModel
+/**
+ * Model checkpoint_blobs
+ * 
+ */
+export type checkpoint_blobs = Prisma.checkpoint_blobsModel
+/**
+ * Model checkpoint_migrations
+ * 
+ */
+export type checkpoint_migrations = Prisma.checkpoint_migrationsModel
+/**
+ * Model checkpoint_writes
+ * 
+ */
+export type checkpoint_writes = Prisma.checkpoint_writesModel
+/**
+ * Model checkpoints
+ * 
+ */
+export type checkpoints = Prisma.checkpointsModel
+/**
+ * Model composition_history_messages
+ * 
+ */
+export type composition_history_messages = Prisma.composition_history_messagesModel
+/**
+ * Model composition_history_threads
+ * 
+ */
+export type composition_history_threads = Prisma.composition_history_threadsModel
+/**
+ * Model normal_history_messages
+ * 
+ */
+export type normal_history_messages = Prisma.normal_history_messagesModel
+/**
+ * Model normal_history_threads
+ * 
+ */
+export type normal_history_threads = Prisma.normal_history_threadsModel
+/**
+ * Model speak_history_messages
+ * 
+ */
+export type speak_history_messages = Prisma.speak_history_messagesModel
+/**
+ * Model speak_history_threads
+ * 
+ */
+export type speak_history_threads = Prisma.speak_history_threadsModel
+/**
+ * Model Visitor
+ * 
+ */
+export type Visitor = Prisma.VisitorModel
+/**
+ * Model PageView
+ * 
+ */
+export type PageView = Prisma.PageViewModel
+/**
+ * Model TrackEvent
+ * 
+ */
+export type TrackEvent = Prisma.TrackEventModel
+/**
+ * Model PerformanceEntry
+ * 
+ */
+export type PerformanceEntry = Prisma.PerformanceEntryModel
+/**
+ * Model ErrorEntry
+ * 
+ */
+export type ErrorEntry = Prisma.ErrorEntryModel

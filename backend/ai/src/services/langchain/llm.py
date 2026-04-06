@@ -97,7 +97,7 @@ class AIService:
             # 调用TTS合成音频
             audio_bytes = await self.tts.synthesize_text(text)
 
-            # 转换为base64
+            # 转为 base64 以便通过 WebSocket JSON 文本帧直接传输
             audio_base64 = (
                 base64.b64encode(audio_bytes).decode("utf-8") if audio_bytes else ""
             )
@@ -132,6 +132,7 @@ class AIService:
 
         # 创建文本切片器
         slicer = TextSlicer()
+        # 异步 TTS 任务池：文本先发，音频稍后补发
         pending_tasks: list[asyncio.Task[Dict[str, Any]]] = []
 
         try:
@@ -147,7 +148,7 @@ class AIService:
                     for slice_text in slices:
                         seq_id = self._next_sequence_id()
 
-                        # 文本立即下发，避免被TTS阻塞
+                        # 先发文本包（audio_pending=True），让前端立刻显示字幕
                         yield {
                             "id": seq_id,
                             "text": slice_text,
@@ -156,13 +157,14 @@ class AIService:
                             "audio_pending": True,
                         }
 
+                        # 同步开启该文本片段的 TTS 任务
                         pending_tasks.append(
                             asyncio.create_task(
                                 self._synthesize_slice(slice_text, seq_id)
                             )
                         )
 
-                        # 非阻塞地下发已完成音频任务
+                        # 非阻塞补发已完成音频包（同一 seq_id）
                         ready_tasks = [task for task in pending_tasks if task.done()]
                         for ready_task in ready_tasks:
                             pending_tasks.remove(ready_task)
@@ -184,7 +186,7 @@ class AIService:
                     asyncio.create_task(self._synthesize_slice(remaining, seq_id))
                 )
 
-            # 继续下发剩余音频任务（按完成顺序）
+            # 继续下发剩余音频任务（按完成顺序，不强行按 seq_id 排序）
             while pending_tasks:
                 done_tasks, pending = await asyncio.wait(
                     pending_tasks, return_when=asyncio.FIRST_COMPLETED
@@ -194,7 +196,7 @@ class AIService:
                     result = await done_task
                     yield result
 
-            # 发送结束标记
+            # 发送结束包：前端收到后可结束当前一轮流式播放
             yield {
                 "id": self._next_sequence_id(),
                 "text": "",
@@ -212,7 +214,7 @@ class AIService:
             if pending_tasks:
                 await asyncio.gather(*pending_tasks, return_exceptions=True)
 
-            # 发送错误结束标记
+            # 发送错误结束包：避免前端无限等待
             yield {
                 "id": self._next_sequence_id(),
                 "text": "",

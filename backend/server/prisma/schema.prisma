@@ -1,111 +1,89 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider     = "prisma-client"
   output       = "../libs/shared/src/generated/prisma"
-  moduleFormat = "cjs" // 模块格式
+  moduleFormat = "cjs"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-enum TradeStatus {
-  NOT_PAY // 未支付 默认值非支付宝枚举 自定义
-  WAIT_BUYER_PAY // 等待买家付款
-  TRADE_CLOSED // 交易关闭
-  TRADE_SUCCESS // 交易成功 可退款
-  TRADE_FINISHED // 交易结束 不可退款
-}
-// 用户表
 model User {
-  id              String           @id @default(cuid()) // 用户ID
-  name            String // 用户名
-  email           String?          @unique // 邮箱
-  phone           String           @unique // 手机号
-  address         String? // 地址
-  password        String // 密码
-  avatar          String? // 头像
-  wordNumber      Int              @default(0) // 单词数量
-  dayNumber       Int              @default(0) // 打卡天数
-  createdAt       DateTime         @default(now()) // 创建时间
-  updatedAt       DateTime         @updatedAt // 更新时间
-  lastLoginAt     DateTime? // 最后登录时间
-  bio             String? // 个人简介
+  id              String           @id @default(cuid())
+  name            String
+  email           String?          @unique
+  phone           String           @unique
+  address         String?
+  password        String
+  avatar          String?
+  wordNumber      Int              @default(0)
+  dayNumber       Int              @default(0)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  lastLoginAt     DateTime?
+  bio             String?
   isTimingTask    Boolean          @default(false)
   timingTaskTime  String           @default("00:00:00")
-  wordBookRecords WordBookRecord[]
-  paymentRecords  PaymentRecord[]
   courseRecords   CourseRecord[]
+  paymentRecords  PaymentRecord[]
+  wordBookRecords WordBookRecord[]
+  visitors        Visitor[] //User别忘记关联
 }
 
-// 记录已操作的单词
 model WordBookRecord {
-  id     String @id @default(cuid())
-  wordId String
-  userId String
-
-  // --- SM-2 算法核心字段 ---
-  easinessFactor Float    @default(2.5) // 初始容易度因子，默认 2.5
-  interval       Int      @default(0) // 下次复习的间隔天数
-  reps           Int      @default(0) // 连续成功复习的次数
-  nextReviewAt   DateTime @default(now()) // 下次复习的具体时间点
-  // ------------------------
-
-  wrongCount Int      @default(0) // 错误次数（可选，用于额外统计）
-  isMaster   Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  word WordBook @relation(fields: [wordId], references: [id], onDelete: Cascade)
-
-  // 关联复习历史日志
-  reviewLogs ReviewLog[]
+  id             String      @id @default(cuid())
+  wordId         String
+  userId         String
+  easinessFactor Float       @default(2.5)
+  interval       Int         @default(0)
+  reps           Int         @default(0)
+  nextReviewAt   DateTime    @default(now())
+  isMaster       Boolean     @default(false)
+  wrongCount     Int         @default(0)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  reviewLogs     ReviewLog[]
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  word           WordBook    @relation(fields: [wordId], references: [id], onDelete: Cascade)
 
   @@unique([userId, wordId])
-  @@index([nextReviewAt]) // 重要：优化“获取今日待复习单词”的查询速度
+  @@index([nextReviewAt])
 }
-// 复习历史流水表
-model ReviewLog {
-  id           String   @id @default(cuid())
-  recordId     String
-  rating       Int // 用户反馈评分 (0-5)
-  responseTime Int // 响应时间 (毫秒)，反映熟练度
-  createdAt    DateTime @default(now())
 
-  record WordBookRecord @relation(fields: [recordId], references: [id], onDelete: Cascade)
+model ReviewLog {
+  id           String         @id @default(cuid())
+  recordId     String
+  rating       Int
+  responseTime Int
+  createdAt    DateTime       @default(now())
+  record       WordBookRecord @relation(fields: [recordId], references: [id], onDelete: Cascade)
 
   @@index([recordId])
 }
-// 单词表
+
 model WordBook {
-  id              String           @id @default(cuid()) // 单词ID
-  word            String // 单词
-  phonetic        String? // 音标
-  definition      String? // 定义
-  translation     String? // 翻译
-  pos             String? // 词性
-  collins         String? // 柯林斯
-  oxford          String? // 牛津
-  tag             String? // 标签
-  bnc             String? // BNC 英国国家语料库
-  frq             String? // FRQ 频率
-  exchange        String? // 同义词
-  gk              Boolean? // 高考
-  zk              Boolean? // 中考
-  gre             Boolean? // GRE
-  toefl           Boolean? // TOEFL
-  ielts           Boolean? // IELTS
-  cet6            Boolean? // 大学英语六级
-  cet4            Boolean? // 大学英语四级
-  ky              Boolean? // 考研
-  createdAt       DateTime         @default(now()) // 创建时间
-  updatedAt       DateTime         @updatedAt // 更新时间
+  id              String           @id @default(cuid())
+  word            String
+  phonetic        String?
+  definition      String?
+  translation     String?
+  pos             String?
+  collins         String?
+  oxford          String?
+  tag             String?
+  bnc             String?
+  frq             String?
+  exchange        String?
+  gk              Boolean?
+  zk              Boolean?
+  gre             Boolean?
+  toefl           Boolean?
+  ielts           Boolean?
+  cet6            Boolean?
+  cet4            Boolean?
+  ky              Boolean?
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
   wordBookRecords WordBookRecord[]
 
   @@index([word])
@@ -113,49 +91,263 @@ model WordBook {
   @@index([word, tag])
 }
 
-// 支付记录
 model PaymentRecord {
-  id            String         @id @default(cuid()) // 支付ID
-  userId        String // 用户ID
-  tradeNo       String? // 支付宝交易号
-  outTradeNo    String         @unique // 订单编号
-  amount        Decimal // 支付金额
-  subject       String // 支付主题
-  body          String // 支付内容
-  tradeStatus   TradeStatus    @default(NOT_PAY) // 支付状态 默认未支付 NOT_PAY, SUCCESS, FAILED
-  sendPayTime   DateTime? // 支付时间
-  createdAt     DateTime       @default(now()) // 创建时间
-  updatedAt     DateTime       @updatedAt // 更新时间
-  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id            String         @id @default(cuid())
+  userId        String
+  tradeNo       String?
+  outTradeNo    String         @unique
+  amount        Decimal
+  subject       String
+  body          String
+  tradeStatus   TradeStatus    @default(NOT_PAY)
+  sendPayTime   DateTime?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   courseRecords CourseRecord[]
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([tradeNo])
 }
 
 model CourseRecord {
-  id              String         @id @default(cuid()) // 课程记录ID
-  userId          String // 用户ID
-  courseId        String // 课程ID
-  isPurchased     Boolean        @default(false) // 是否购买
-  createdAt       DateTime       @default(now()) // 创建时间
-  updatedAt       DateTime       @updatedAt // 更新时间
-  paymentRecordId String? // 支付记录ID
+  id              String         @id @default(cuid())
+  userId          String
+  courseId        String
+  isPurchased     Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  paymentRecordId String?
+  course          Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
   paymentRecord   PaymentRecord? @relation(fields: [paymentRecordId], references: [id], onDelete: Cascade)
   user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  course          Course         @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   @@unique([userId, courseId])
 }
 
 model Course {
-  id            String         @id @default(cuid()) // 课程ID
-  name          String // 课程名
-  value         String // 课程value
-  description   String? // 课程描述
-  teacher       String // 教师
-  url           String // 课程url
-  price         Decimal // 课程价格
-  createdAt     DateTime       @default(now()) // 创建时间
-  updatedAt     DateTime       @updatedAt // 更新时间
+  id            String         @id @default(cuid())
+  name          String
+  value         String
+  description   String?
+  teacher       String
+  url           String
+  price         Decimal
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
   courseRecords CourseRecord[]
+}
+
+model checkpoint_blobs {
+  thread_id     String
+  checkpoint_ns String @default("")
+  channel       String
+  version       String
+  type          String
+  blob          Bytes?
+
+  @@id([thread_id, checkpoint_ns, channel, version])
+  @@index([thread_id])
+}
+
+model checkpoint_migrations {
+  v Int @id
+}
+
+model checkpoint_writes {
+  thread_id     String
+  checkpoint_ns String  @default("")
+  checkpoint_id String
+  task_id       String
+  idx           Int
+  channel       String
+  type          String?
+  blob          Bytes
+  task_path     String  @default("")
+
+  @@id([thread_id, checkpoint_ns, checkpoint_id, task_id, idx])
+  @@index([thread_id])
+}
+
+model checkpoints {
+  thread_id            String
+  checkpoint_ns        String  @default("")
+  checkpoint_id        String
+  parent_checkpoint_id String?
+  type                 String?
+  checkpoint           Json
+  metadata             Json    @default("{}")
+
+  @@id([thread_id, checkpoint_ns, checkpoint_id])
+  @@index([thread_id])
+}
+
+model composition_history_messages {
+  id                          BigInt                      @id @default(autoincrement())
+  user_id                     String
+  thread_id                   String
+  role                        String
+  content                     String
+  created_at                  DateTime                    @default(now()) @db.Timestamptz(6)
+  composition_history_threads composition_history_threads @relation(fields: [user_id, thread_id], references: [user_id, thread_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_composition_history_thread")
+
+  @@index([user_id, thread_id, created_at], map: "idx_composition_history_messages_thread")
+}
+
+model composition_history_threads {
+  user_id                      String
+  thread_id                    String
+  session_id                   String?
+  topic                        String?
+  exam_type                    String?
+  task_type                    String?
+  last_band_score              Float?
+  preview                      String?
+  updated_at                   DateTime                       @default(now()) @db.Timestamptz(6)
+  composition_history_messages composition_history_messages[]
+
+  @@id([user_id, thread_id])
+  @@index([user_id, updated_at(sort: Desc)], map: "idx_composition_history_threads_updated")
+}
+
+model normal_history_messages {
+  id                     BigInt                 @id @default(autoincrement())
+  user_id                String
+  thread_id              String
+  role                   String
+  content                String
+  created_at             DateTime               @default(now()) @db.Timestamptz(6)
+  normal_history_threads normal_history_threads @relation(fields: [user_id, thread_id], references: [user_id, thread_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_normal_history_thread")
+
+  @@index([user_id, thread_id, created_at], map: "idx_normal_history_messages_thread")
+}
+
+model normal_history_threads {
+  user_id                 String
+  thread_id               String
+  session_id              String?
+  mode                    String?
+  preview                 String?
+  updated_at              DateTime                  @default(now()) @db.Timestamptz(6)
+  normal_history_messages normal_history_messages[]
+
+  @@id([user_id, thread_id])
+  @@index([user_id, updated_at(sort: Desc)], map: "idx_normal_history_threads_updated")
+}
+
+model speak_history_messages {
+  id                    BigInt                @id @default(autoincrement())
+  user_id               String
+  thread_id             String
+  role                  String
+  content               String
+  created_at            DateTime              @default(now()) @db.Timestamptz(6)
+  speak_history_threads speak_history_threads @relation(fields: [user_id, thread_id], references: [user_id, thread_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_speak_history_thread")
+
+  @@index([user_id, thread_id, created_at], map: "idx_speak_history_messages_thread")
+}
+
+model speak_history_threads {
+  user_id                String
+  thread_id              String
+  session_id             String?
+  topic                  String?
+  preview                String?
+  updated_at             DateTime                 @default(now()) @db.Timestamptz(6)
+  speak_history_messages speak_history_messages[]
+
+  @@id([user_id, thread_id])
+  @@index([user_id, updated_at(sort: Desc)], map: "idx_speak_history_threads_updated")
+}
+
+enum TradeStatus {
+  NOT_PAY
+  WAIT_BUYER_PAY
+  TRADE_CLOSED
+  TRADE_SUCCESS
+  TRADE_FINISHED
+}
+
+model Visitor {
+  id                 String             @id @default(cuid()) // 访客ID
+  anonymousId        String             @unique // 匿名ID
+  userId             String? // 用户ID
+  user               User?              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt          DateTime           @default(now()) // 创建时间
+  updatedAt          DateTime           @updatedAt // 更新时间
+  browser            String? // 浏览器信息
+  os                 String? // 操作系统信息
+  device             String? // 设备信息
+  pageViews          PageView[]
+  trackEvents        TrackEvent[]
+  performanceEntries PerformanceEntry[]
+  errorEntries       ErrorEntry[]
+
+  @@index([userId])
+  @@index([anonymousId])
+}
+
+//pv表
+model PageView {
+  id        String   @id @default(cuid()) // pvID
+  visitorId String // 访客ID
+  visitor   Visitor  @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  url       String // 页面URL
+  referrer  String? // 来源URL
+  path      String // 页面路径
+  createdAt DateTime @default(now()) // 创建时间
+  updatedAt DateTime @updatedAt // 更新时间
+
+  @@index([visitorId, createdAt])
+  @@index([path, createdAt])
+}
+
+//用户行为表
+model TrackEvent {
+  id        String   @id @default(cuid()) // 行为ID
+  visitorId String // 访客ID
+  visitor   Visitor  @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  event     String // 事件类型
+  payload   Json? // 事件数据
+  url       String? // 页面URL
+  createdAt DateTime @default(now()) // 创建时间
+  updatedAt DateTime @updatedAt // 更新时间
+
+  @@index([visitorId, createdAt])
+  @@index([event, createdAt])
+}
+
+//性能指标
+model PerformanceEntry {
+  id        String   @id @default(cuid()) // 性能指标ID
+  visitorId String // 访客ID
+  visitor   Visitor  @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  fp        Float? // FP
+  fcp       Float? // FCP
+  lcp       Float? // LCP
+  inp       Float? // INP
+  cls       Float? // CLS
+  createdAt DateTime @default(now()) // 创建时间
+  updatedAt DateTime @updatedAt // 更新时间
+
+  @@index([fp, createdAt])
+  @@index([fcp, createdAt])
+  @@index([lcp, createdAt])
+  @@index([inp, createdAt])
+  @@index([cls, createdAt])
+  @@index([fp, fcp, lcp, inp, cls, createdAt])
+}
+
+model ErrorEntry {
+  id        String   @id @default(cuid()) // 错误指标ID
+  visitorId String // 访客ID
+  visitor   Visitor  @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  error     String // 错误类型 js |promise
+  message   String? // 错误信息
+  stack     String? // 错误堆栈
+  url       String? // 页面URL
+  createdAt DateTime @default(now()) // 创建时间
+  updatedAt DateTime @updatedAt // 更新时间
+
+  @@index([visitorId, createdAt])
+  @@index([error, createdAt])
 }

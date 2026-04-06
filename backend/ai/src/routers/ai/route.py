@@ -120,12 +120,14 @@ def _build_normal_preview(answer: str) -> str:
 
 @ai_router.websocket("/ws")
 async def chat_websocket(websocket: WebSocket):
+    # 兼容旧前端入口：转发到口语 WS 处理器（流式文本+音频）
     await handle_speak_websocket(websocket)
 
 
 @ai_router.websocket("/speak/ws")
 async def speak_websocket(websocket: WebSocket):
     """口语专用 WS 路由（功能与 /ws 相同，语义更明确）。"""
+    # 新前端推荐入口：语义化路径，底层处理逻辑与 /ws 一致
     await handle_speak_websocket(websocket)
 
 
@@ -136,6 +138,7 @@ async def normal_websocket(websocket: WebSocket):
 
     try:
         while True:
+            # 每一轮先接收前端发送的一条 JSON 文本消息
             raw_message = await websocket.receive_text()
             payload = json.loads(raw_message)
 
@@ -179,7 +182,7 @@ async def normal_websocket(websocket: WebSocket):
             seq = 0
             answer_parts: list[str] = []
 
-            # 可选先发一条上下文包，便于前端调试
+            # 先发一条 meta 包，告诉前端本轮上下文（非结束包）
             await websocket.send_text(
                 json.dumps(
                     {
@@ -202,6 +205,7 @@ async def normal_websocket(websocket: WebSocket):
                     continue
                 seq += 1
                 answer_parts.append(text)
+                # 文本增量包：前端可边收边渲染，实现打字机效果
                 await websocket.send_text(
                     json.dumps(
                         {
@@ -226,6 +230,7 @@ async def normal_websocket(websocket: WebSocket):
                 )
 
             seq += 1
+            # 结束包：本轮流式输出完成，前端可结束 loading 态
             await websocket.send_text(
                 json.dumps(
                     {
@@ -239,6 +244,7 @@ async def normal_websocket(websocket: WebSocket):
             )
 
     except Exception as e:
+        # 异常统一返回 error 结束包，避免前端一直等待
         await websocket.send_text(
             json.dumps(
                 {"id": -1, "text": "", "is_end": True, "error": str(e)},

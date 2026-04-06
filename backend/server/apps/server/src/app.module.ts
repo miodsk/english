@@ -12,6 +12,7 @@ import { SocketModule } from './socket/socket.module';
 import { LearnModule } from './learn/learn.module';
 import { DigestService } from './digest/digest.service';
 import { DigestModule } from './digest/digest.module';
+import { TrackerModule } from './tracker/tracker.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { DigestModule } from './digest/digest.module';
     SocketModule,
     LearnModule,
     DigestModule,
+    TrackerModule,
   ],
   controllers: [AppController],
   providers: [
